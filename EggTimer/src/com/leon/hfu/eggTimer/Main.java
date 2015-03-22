@@ -29,7 +29,7 @@ public class Main {
 	 * Entrance point for the program execution.
 	 * Reads input parameters from STDIN and creates and runs Timer thread.
 	 *
-	 * @param		args		Command line arguments
+	 * @param	args		Command line arguments
 	 */
 	public static void main(String[] args) {
 		Timer timer;
@@ -45,6 +45,7 @@ public class Main {
 
 			timer = new Timer(message, time);
 			(new Thread(timer)).start();
-		} catch (Exception e) { }
+		}
+		catch (Exception e) { }
 	}
 }

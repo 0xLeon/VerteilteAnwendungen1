@@ -41,9 +41,9 @@ public class OperationExecutor implements Runnable {
 	/**
 	 * Creates a new OperationExecutor object and saves necessary data.
 	 *
-	 * @param		operation			Operation object
-	 * @param		x					Parameter for first operation execution
-	 * @param		resultCollector		ResultCollector saving operation results
+	 * @param	operation		Operation object
+	 * @param	x			Parameter for first operation execution
+	 * @param	resultCollector		ResultCollector saving operation results
 	 */
 	public OperationExecutor(F operation, int x, ResultCollector resultCollector) {
 		this.operation = operation;

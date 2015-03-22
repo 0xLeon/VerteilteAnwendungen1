@@ -37,8 +37,8 @@ public class Timer implements Runnable {
 	/**
 	 * Creates a new Timer object and initializes local fields.
 	 *
-	 * @param		message		Message displayed when time is up.
-	 * @param		time		Time in seconds to wait.
+	 * @param	message		Message displayed when time is up.
+	 * @param	time		Time in seconds to wait.
 	 */
 	public Timer(String message, int time) {
 		this.setMessage(message);
@@ -48,7 +48,7 @@ public class Timer implements Runnable {
 	/**
 	 * Sets the message displayed when time is up.
 	 *
-	 * @param		message		Message displayed when time is up.
+	 * @param	message		Message displayed when time is up.
 	 */
 	public void setMessage(String message) {
 		this.message = message;
@@ -57,7 +57,7 @@ public class Timer implements Runnable {
 	/**
 	 * Sets the time in seconds to wait.
 	 *
-	 * @param		time		Time in seconds to wait.
+	 * @param	time		Time in seconds to wait.
 	 */
 	public void setTime(int time) {
 		if (time > 0) {
@@ -69,7 +69,7 @@ public class Timer implements Runnable {
 	 * Calls Timer#sleep(int) to wait and displays the message.
 	 * Print seconds left every second befor displaying the message.
 	 *
-	 * @see			Runnable#run()
+	 * @see		Runnable#run()
 	 */
 	@Override
 	public void run() {
@@ -84,7 +84,7 @@ public class Timer implements Runnable {
 	/**
 	 * Sleeps given seconds and catches all InterruptedExceptions.
 	 *
-	 * @param		m			Time in seconds to wait.
+	 * @param	m		Time in seconds to wait.
 	 */
 	public static void sleep(int m) {
 		try {

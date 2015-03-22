@@ -23,11 +23,11 @@ package com.leon.hfu.dispatcher;
  * @author		Stefan Hahn
  */
 public interface F {
-    /**
-     * An integer to integer function.
-     *
-     * @param		x		Parameter
-     * @return				Result of the function
-     */
-    public int f(int x);
+	/**
+	 * An integer to integer function.
+	 *
+	 * @param	x		Parameter
+	 * @return			Result of the function
+	 */
+	public int f(int x);
 }

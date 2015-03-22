@@ -17,7 +17,7 @@
  */
 package com.leon.hfu.dispatcher;
 
-import  java.util.Arrays;
+import java.util.Arrays;
 
 /**
  * Main class taking care of program execution.
@@ -47,7 +47,7 @@ public class Main {
 	 * Entrance point for the program execution.
 	 * Creates operation object and calls #execute(F, int) method.
 	 *
-	 * @param		args		Command line arguments
+	 * @param	args		Command line arguments
 	 */
 	public static void main(String[] args) {
 		F operation = new Faculty();
@@ -59,9 +59,9 @@ public class Main {
 	/**
 	 * Creates threads for calculation execution and waits for all results.
 	 *
-	 * @param		f			Operation object
-	 * @param		n			Amount of operation calculation runs
-	 * @return					All operation results
+	 * @param	f		Operation object
+	 * @param	n		Amount of operation calculation runs
+	 * @return			All operation results
 	 */
 	public static int[] execute(F f, int n) {
 		ResultCollector resultCollector = new ResultCollector(n);

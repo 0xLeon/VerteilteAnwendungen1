@@ -24,57 +24,57 @@ package com.leon.hfu.dispatcher;
  * @author		Stefan Hahn
  */
 public class ResultCollector {
-    /**
-     * Local array for saved values.
-     */
-    private int[] results;
+	/**
+	 * Local array for saved values.
+	 */
+	private int[] results;
 
-    /**
-     * Amount of values to be safed.
-     */
-    private int n;
+	/**
+	 * Amount of values to be safed.
+	 */
+	private int n;
 
-    /**
-     * Counts safed values. Reaches 0 when #n values are saved.
-     */
-    private int counter;
+	/**
+	 * Counts safed values. Reaches 0 when #n values are saved.
+	 */
+	private int counter;
 
-    /**
-     * Creates a new ResultCollector object and initialized the local array.
+	/**
+	 * Creates a new ResultCollector object and initialized the local array.
 	 *
-     * @param		n			Amount of values to be safed
-     */
-    public ResultCollector(int n) {
-        this.n = n;
-        this.counter = n;
-        this.results = new int[n];
-    }
+	 * @param	n		Amount of values to be safed
+	 */
+	public ResultCollector(int n) {
+		this.n = n;
+		this.counter = n;
+		this.results = new int[n];
+	}
 
-    /**
-     * Saves a given value on position i in a local array.
+	/**
+	 * Saves a given value on position i in a local array.
 	 * This method is thread safe.
 	 *
-     * @param		i			Position in local array
-     * @param		result		Value to be safed
-     */
-    public synchronized void pushResult(int i, int result) {
-        if ((i > -1) && (i < this.n)) {
-            this.results[i] = result;
-            this.counter--;
+	 * @param	i		Position in local array
+	 * @param	result		Value to be safed
+	 */
+	public synchronized void pushResult(int i, int result) {
+		if ((i > -1) && (i < this.n)) {
+			this.results[i] = result;
+			this.counter--;
 
-            if (this.counter == 0) {
-                this.notify();
-            }
-        }
-    }
+			if (this.counter == 0) {
+				this.notify();
+			}
+		}
+	}
 
-    /**
-     * Returns the complete local array.
+	/**
+	 * Returns the complete local array.
 	 * This method is thread safe.
 	 *
-     * @return					The complete local array
-     */
-    public synchronized int[] getResults() {
+	 * @return			The complete local array
+	 */
+	public synchronized int[] getResults() {
 		return this.results;
-    }
+	}
 }
