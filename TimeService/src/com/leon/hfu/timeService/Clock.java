@@ -21,18 +21,44 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by Stefan on 21.03.2015.
+ * Util class providing functions to get formatted date and time.
+ *
+ * @author		Stefan Hahn
  */
 public class Clock {
+	/**
+	 * Time format template.
+	 * Format is hh:mm:ss.
+	 */
 	private static SimpleDateFormat timeFormatter = new SimpleDateFormat("kk:mm:ss");
+
+	/**
+	 * Date format template.
+	 * Format is dd.mm.yyyy.
+	 */
 	private static SimpleDateFormat dateFormatter = new SimpleDateFormat("dd.MM.yyyy");
+
+	/**
+	 * Util Date object.
+	 */
 	private static Date d = new Date();
 
+	/**
+	 * Returns a formatted date String according to #dateFormatter template.
+	 *
+	 * @return			Formatted date String
+	 */
 	public static String date() {
 		d.setTime(System.currentTimeMillis());
 
 		return dateFormatter.format(d);
 	}
+
+	/**
+	 * Returns a formatted time String according to #timeFormatter template.
+	 *
+	 * @return			Formatted time String
+	 */
 	public static String time() {
 		d.setTime(System.currentTimeMillis());
 

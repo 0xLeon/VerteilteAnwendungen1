@@ -24,7 +24,7 @@ import java.net.Socket;
 import java.util.Scanner;
 
 /**
- *
+ * Main class taking care of program execution.
  *
  * @author		Stefan Hahn
  */
@@ -35,7 +35,10 @@ public class TimeService {
 	public static final int PORT = 75;
 
 	/**
-	 *
+	 * Entrance point for the program execution.
+	 * Creates a server socket listening on port specified by #PORT.
+	 * Blocks till connection is established and handles only one
+	 * connection at once.
 	 *
 	 * @param	args		Command line arguments
 	 */
