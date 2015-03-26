@@ -66,7 +66,7 @@ public class TimeService {
 				connectionOut.println("time service");
 
 				connectionLoop:
-				while (true) {
+				while (server.isConnected()) {
 					nextMessage = connectionIn.nextLine();
 
 					switch (nextMessage) {
