@@ -8,10 +8,15 @@ import com.leon.hfu.util.commandLine.CommandLineExecutor;
  * @author		Stefan Hahn
  */
 public class Main {
+	/**
+	 * TimeServiceClientProgram instance holding the main program.
+	 */
 	public static TimeServiceClientProgram program;
 
 	/**
-	 *
+	 * Starts this program.
+	 * Creates an instance of TimeServiceClientProgram and passes it
+	 * to the executing method.
 	 *
 	 * @param	args		Command line arguments
 	 */

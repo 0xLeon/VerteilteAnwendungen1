@@ -1,13 +1,19 @@
 package com.leon.hfu.util.commandLine;
 
 /**
- * Created by Stefan on 22.03.2015.
+ * Handles execution of instances. See the #run() method
+ * for more information
+ *
+ * @author		Stefan Hahn
  */
 public final class CommandLineExecutor {
 	/**
+	 * Runs a given CommandLineProgram instance. This function contains
+	 * the needed endless loop calling CommandLineProgram#execute() during
+	 * every run.
 	 *
-	 * @param	program
-	 * @param	args
+	 * @param	program		CommandLineProgram instance object
+	 * @param	args		Command line arguments
 	 */
 	public static final void run(CommandLineProgram program, String[] args) {
 		try {

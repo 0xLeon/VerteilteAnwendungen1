@@ -8,13 +8,35 @@ import java.io.IOException;
 import java.util.Scanner;
 
 /**
- * Created by Stefan on 23.03.2015.
+ * Contains a programm which is able to display date and time
+ * received from a network service.
+ *
+ * @author		Stefan Hahn
  */
 public class TimeServiceClientProgram implements CommandLineProgram {
+	/**
+	 * Server address.
+	 * A Time Service has to be running on TCP port 75.
+	 */
 	private String address;
+
+	/**
+	 * Scanner instance used to read from STDIN.
+	 */
 	private Scanner scanner;
+
+	/**
+	 * Specified command ID from STDIN.
+	 */
 	private int command;
 
+	/**
+	 * Initializes this program.
+	 * Creates a Scanner instance on STDIN and promts for the server address
+	 *
+	 * @param	args		Command line arguments
+	 * @see		CommandLineProgram#initialize(String[])
+	 */
 	@Override
 	public void initialize(String[] args) {
 		this.scanner = new Scanner(System.in);
@@ -23,6 +45,14 @@ public class TimeServiceClientProgram implements CommandLineProgram {
 		address = scanner.nextLine();
 	}
 
+	/**
+	 * Executes the main part of this program.
+	 * Promots for a command ID and executes the related program part.
+	 * This includes getting the current date and time from a server.
+	 *
+	 * @throws	CommandLineException		Thrown to controll programm execution
+	 * @see		CommandLineProgram#execute()
+	 */
 	@Override
 	public void execute() throws CommandLineException {
 		System.out.print("Please specify the command!\n 1 - Date\n 2 - Time\n 3 - End\n 4 - Shutdown\n 5 - Exit\n> ");
@@ -49,6 +79,12 @@ public class TimeServiceClientProgram implements CommandLineProgram {
 		}
 	}
 
+	/**
+	 * Finishes this program.
+	 * Closes the Scanner instance running on STDIN.
+	 *
+	 * @see		CommandLineProgram#finish()
+	 */
 	@Override
 	public void finish() {
 		this.scanner.close();
