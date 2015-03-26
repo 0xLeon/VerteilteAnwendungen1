@@ -15,3 +15,7 @@ hs_err_pid*
 .idea/
 out/
 *.iml
+
+# git files
+project.diff
+project.log
