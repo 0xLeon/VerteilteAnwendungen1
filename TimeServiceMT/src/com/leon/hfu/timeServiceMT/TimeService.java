@@ -23,8 +23,8 @@ public class TimeService implements Runnable {
 	 */
 	public TimeService(Socket serverInstance) throws IOException {
 		this.serverInstance = serverInstance;
-		this.connectionIn = new Scanner(serverInstance.getInputStream());
-		this.connectionOut = new PrintStream(serverInstance.getOutputStream());
+		this.connectionIn = new Scanner(this.serverInstance.getInputStream());
+		this.connectionOut = new PrintStream(this.serverInstance.getOutputStream());
 	}
 
 	/**
@@ -40,23 +40,23 @@ public class TimeService implements Runnable {
 
 		connectionLoop:
 		while (serverInstance.isConnected()) {
-			nextMessage = connectionIn.nextLine();
+			nextMessage = this.connectionIn.nextLine();
 
 			switch (nextMessage) {
 				case "date":
-					connectionOut.println(Clock.date());
+					this.connectionOut.println(Clock.date());
 					break;
 				case "time":
-					connectionOut.println(Clock.time());
+					this.connectionOut.println(Clock.time());
 					break;
 				// case "shutdown":
 				// 	System.out.println("Shutting down Time Service");
-				// 	connectionOut.println("end");
+				// 	this.connectionOut.println("end");
 				// 	break mainLoop;
 				default: // end
-					System.out.println("Closing connection from " + serverInstance.getRemoteSocketAddress());
+					System.out.println("Closing connection from " + this.serverInstance.getRemoteSocketAddress());
 					System.out.println("Last client message was »" + nextMessage + "«");
-					connectionOut.println("end");
+					this.connectionOut.println("end");
 					break connectionLoop;
 			}
 		}
@@ -64,7 +64,7 @@ public class TimeService implements Runnable {
 		try {
 			this.connectionOut.close();
 			this.connectionIn.close();
-			serverInstance.close();
+			this.serverInstance.close();
 		}
 		catch (IOException e) { }
 	}
