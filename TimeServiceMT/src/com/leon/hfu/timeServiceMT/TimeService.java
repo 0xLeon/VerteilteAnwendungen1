@@ -6,20 +6,38 @@ import java.net.Socket;
 import java.util.Scanner;
 
 /**
- *
+ * A Time Service implementation ready for multi-threaded use.
+ * Each instance of this class is able to process a single client
+ * connection and handle incomming message and outgoing response.
  *
  * @author		Stefan Hahn
  */
 public class TimeService implements Runnable {
+	/**
+	 * Client connection socket, which handles the communcation
+	 * with the connected client.
+	 */
 	private Socket serverInstance;
+
+	/**
+	 * Wrapped input stream, which enabled the service to read
+	 * input data sent by the client.
+	 */
 	private Scanner connectionIn;
+
+	/**
+	 * Wrapped output stream, which enabled the service to write
+	 * output data sendng it to the client.
+	 */
 	private PrintStream connectionOut;
 
 	/**
+	 * Creates a new TimeService objects.
+	 * Stores the client connection socket and creates streams
+	 * which enable easier handlng of message transfer.
 	 *
-	 *
-	 * @param	serverInstance
-	 * @throws	IOException
+	 * @param	serverInstance		Client connection this thread should handle.
+	 * @throws	IOException		Thrown when there is an error wrapping input or output streams.
 	 */
 	public TimeService(Socket serverInstance) throws IOException {
 		this.serverInstance = serverInstance;
@@ -28,7 +46,10 @@ public class TimeService implements Runnable {
 	}
 
 	/**
-	 *
+	 * Executes the message handling loop.
+	 * This loop runs in an own thread, thus won't block other incomming
+	 * connections. When the connection loop is finished (end message),
+	 * this thread will be suspended.
 	 *
 	 * @see		Runnable#run()
 	 */
