@@ -35,9 +35,8 @@ public class Faculty implements F {
 	public int f(int x) {
 		int result = 1;
 
-		while (x > 1) {
+		for (; x > 1; x--) {
 			result = result * x;
-			x--;
 		}
 
 		return result;
