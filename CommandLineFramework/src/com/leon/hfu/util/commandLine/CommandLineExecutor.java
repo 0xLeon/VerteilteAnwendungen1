@@ -23,10 +23,12 @@ public final class CommandLineExecutor {
 			while (true) {
 				try {
 					program.execute();
+					sleep(1000);
 				}
 				catch (CommandLineException e) {
 					switch (e.getType()) {
 						case CONTINUE:
+							sleep(1000);
 							continue mainLoop;
 						case BREAK:
 							break mainLoop;
@@ -47,5 +49,17 @@ public final class CommandLineExecutor {
 		finally {
 			program.finish();
 		}
+	}
+
+	/**
+	 * Sleeps given milli seconds and catches all InterruptedExceptions.
+	 *
+	 * @param	millis		Time to wait in milli seconds.
+	 */
+	private static void sleep(long millis) {
+		try {
+			Thread.sleep(millis);
+		}
+		catch (InterruptedException e) { }
 	}
 }
