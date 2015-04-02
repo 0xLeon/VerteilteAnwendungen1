@@ -75,7 +75,7 @@ public class TimeServiceClientProgram implements CommandLineProgram {
 			}
 		}
 		catch (IOException e) {
-
+			e.printStackTrace();
 		}
 	}
 
