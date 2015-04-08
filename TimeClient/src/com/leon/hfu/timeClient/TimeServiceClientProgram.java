@@ -84,8 +84,10 @@ public class TimeServiceClientProgram implements CommandLineProgram {
 					System.out.println("Server response:\n" + TimeServiceClient.timeFromServer(address));
 					break;
 				case 3:
+					// TODO: implement
 					break;
 				case 4:
+					// TODO: implement
 					break;
 				case 5:
 					throw new CommandLineException(CommandLineExceptionType.BREAK);
