@@ -38,16 +38,6 @@ public class HTTPClientProgram implements CommandLineProgram {
 	private Scanner scanner;
 
 	/**
-	 * Specified command ID from STDIN.
-	 */
-	private int command;
-
-	/**
-	 *
-	 */
-	private String targetURL;
-
-	/**
 	 *
 	 *
 	 * @param	args		Command line arguments
@@ -63,11 +53,16 @@ public class HTTPClientProgram implements CommandLineProgram {
 	 */
 	@Override
 	public void execute() throws CommandLineException {
-		System.out.print("Please enter an URL!\n> ");
+		System.out.print("Please enter an URL or exit to quit!\n> ");
 
 		try {
-			this.targetURL = this.scanner.nextLine();
-			HTTPClient.get(this.targetURL);
+			String inputLine = this.scanner.nextLine();
+
+			if (inputLine.equals("exit")) {
+				throw new CommandLineException(CommandLineExceptionType.BREAK);
+			}
+
+			HTTPClient.get(inputLine);
 		}
 		catch (NoSuchElementException e) {
 			System.err.println("\nCouldn't read input!");
