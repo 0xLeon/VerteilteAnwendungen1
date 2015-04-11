@@ -160,7 +160,7 @@ public class HTTPRequest {
 		Matcher headerFieldMatcher = HTTPRequest.HEADER_FIELD_SPLITTER.matcher(this.headerString + "\r\n");
 
 		while (headerFieldMatcher.find()) {
-			this.headerFields.put(headerFieldMatcher.group("headerName"), headerFieldMatcher.group("headerValue"));
+			this.headerFields.put(headerFieldMatcher.group("headerName").toLowerCase(), headerFieldMatcher.group("headerValue"));
 		}
 
 		this.parsed = true;
