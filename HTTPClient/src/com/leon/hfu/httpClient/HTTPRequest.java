@@ -24,7 +24,10 @@ import java.io.OutputStreamWriter;
 import java.net.MalformedURLException;
 import java.net.Socket;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -34,6 +37,7 @@ import java.util.regex.Pattern;
 public class HTTPRequest {
 	public static final Pattern STATUS_LINE_PATTERN = Pattern.compile("HTTP/\\d\\.\\d (?<statusCode>\\d{3}) (?<statusText>.*?)\r\n");
 	public static final Pattern HEADER_FIELD_SPLITTER = Pattern.compile("(?<headerName>.*?):(?:\\s*)(?<headerValue>.*?)\r\n");
+	public static final SimpleDateFormat HEADER_DATE_FORMAT = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z", Locale.ENGLISH);
 
 	private URL requestURL;
 
@@ -225,5 +229,27 @@ public class HTTPRequest {
 		}
 
 		return (this.statusCode == 200);
+	}
+
+	public Date getLastModifiedDate() throws IOException {
+		if (!this.executed) {
+			throw new IOException("Request has to be executed");
+		}
+		else if (!this.parsed) {
+			throw new IOException("Request has to be parsed");
+		}
+
+		// Last-Modified: Fri, 10 Apr 2015 19:08:52 GMT
+
+		try {
+			if (this.headerFields.containsKey("last-modified")) {
+				return HTTPRequest.HEADER_DATE_FORMAT.parse(this.headerFields.get("last-modified"));
+			}
+		}
+		catch (ParseException e) {
+			System.err.println("Couldn't parse last-modified header date: " + this.headerFields.get("last-modified"));
+		}
+
+		return null;
 	}
 }
