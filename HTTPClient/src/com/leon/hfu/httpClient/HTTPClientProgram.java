@@ -23,8 +23,11 @@ import com.leon.hfu.util.commandLine.CommandLineProgram;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+import java.util.TimeZone;
 
 /**
  *
@@ -32,10 +35,15 @@ import java.util.Scanner;
  * @author		Stefan Hahn
  */
 public class HTTPClientProgram implements CommandLineProgram {
+	private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd MMM yyyy HH:mm:ss z");
 	/**
 	 * Scanner instance used to read from STDIN.
 	 */
 	private Scanner scanner;
+
+	static {
+		HTTPClientProgram.DATE_FORMAT.setTimeZone(TimeZone.getTimeZone("GMT"));
+	}
 
 	/**
 	 *
@@ -62,7 +70,21 @@ public class HTTPClientProgram implements CommandLineProgram {
 				throw new CommandLineException(CommandLineExceptionType.BREAK);
 			}
 
-			HTTPClient.get(inputLine);
+			HTTPRequest request = (new HTTPRequest(inputLine)).execute().parse();
+
+			System.out.println("------------------------------");
+			System.out.println("URL Exists: " + request.urlExists());
+			System.out.println("Status: " + request.getStatusCode() + " " + request.getStatusText());
+			System.out.println("Last Modified Date: " + HTTPClientProgram.DATE_FORMAT.format(request.getLastModifiedDate()));
+
+			System.out.println("------------------------------");
+			System.out.println("Response Header:");
+			System.out.println(request.getRawHeader());
+
+			System.out.println("------------------------------");
+			System.out.println("Response Body:");
+			System.out.println(request.getRawBody());
+			System.out.println("------------------------------");
 		}
 		catch (NoSuchElementException e) {
 			System.err.println("\nCouldn't read input!");
@@ -74,7 +96,7 @@ public class HTTPClientProgram implements CommandLineProgram {
 
 			throw new CommandLineException(CommandLineExceptionType.CONTINUE);
 		}
-		catch (IOException e) {
+		catch (ParseException | IOException e) {
 			System.err.println(e.getMessage());
 
 			throw new CommandLineException(CommandLineExceptionType.CONTINUE);
