@@ -24,6 +24,7 @@ import java.io.OutputStreamWriter;
 import java.net.MalformedURLException;
 import java.net.Socket;
 import java.net.URL;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -139,7 +140,7 @@ public class HTTPRequest {
 		return this;
 	}
 
-	public HTTPRequest parse() {
+	public HTTPRequest parse() throws ParseException {
 		if (this.parsed) {
 			return this;
 		}
@@ -152,9 +153,13 @@ public class HTTPRequest {
 
 		// status line
 		Matcher statusLineMatcher = HTTPRequest.STATUS_LINE_PATTERN.matcher(this.headerString);
-		statusLineMatcher.find();
-		this.statusCode = Integer.parseInt(statusLineMatcher.group("statusCode"), 10);
-		this.statusText = statusLineMatcher.group("statusText");
+		if (statusLineMatcher.find()) {
+			this.statusCode = Integer.parseInt(statusLineMatcher.group("statusCode"), 10);
+			this.statusText = statusLineMatcher.group("statusText");
+		}
+		else {
+			throw new ParseException("Couldn't parse response header, status not found.", 0);
+		}
 
 		// header fields
 		Matcher headerFieldMatcher = HTTPRequest.HEADER_FIELD_SPLITTER.matcher(this.headerString + "\r\n");

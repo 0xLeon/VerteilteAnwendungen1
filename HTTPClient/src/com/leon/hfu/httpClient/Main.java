@@ -21,6 +21,7 @@ import com.leon.hfu.util.commandLine.CommandLineExecutor;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.text.ParseException;
 
 /**
  *
@@ -50,6 +51,9 @@ public class Main {
 		}
 		catch (MalformedURLException e) {
 			System.err.println("Invalid URL!");
+		}
+		catch (ParseException e) {
+			System.err.println(e.getMessage());
 		}
 		catch (IOException e) {
 			System.err.println(e.getMessage());
