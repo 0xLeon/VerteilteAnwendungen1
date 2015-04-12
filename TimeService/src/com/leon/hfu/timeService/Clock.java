@@ -39,7 +39,7 @@ public class Clock {
 	private static SimpleDateFormat dateFormatter = new SimpleDateFormat("dd.MM.yyyy");
 
 	/**
-	 * Util Date object.
+	 * Util Date object
 	 */
 	private static Date d = new Date();
 

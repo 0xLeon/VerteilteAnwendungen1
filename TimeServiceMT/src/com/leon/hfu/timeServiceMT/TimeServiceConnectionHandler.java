@@ -19,7 +19,7 @@ public class TimeServiceConnectionHandler {
 	public static final int PORT = 75;
 
 	/**
-	 * Server socket listenng on TCP port in #PORT
+	 * Server socket listenng on TCP port in #PORT constant.
 	 */
 	private ServerSocket serverSocket;
 

@@ -60,8 +60,8 @@ public class Main {
 	 * Creates threads for calculation execution and waits for all results.
 	 *
 	 * @param	f		Operation object
-	 * @param	n		Amount of operation calculation runs
-	 * @return			All operation results
+	 * @param	n		Amount of operation calculation runs.
+	 * @return			All operation results.
 	 */
 	public static int[] execute(F f, int n) {
 		ResultCollector resultCollector = new ResultCollector(n);

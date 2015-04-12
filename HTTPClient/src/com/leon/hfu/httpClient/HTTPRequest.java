@@ -87,12 +87,12 @@ public class HTTPRequest {
 	private String statusText = "";
 
 	/**
-	 * Response header as string
+	 * Response header
 	 */
 	private String headerString = "";
 
 	/**
-	 * Response body as string
+	 * Response body
 	 */
 	private String bodyString = "";
 
@@ -146,8 +146,8 @@ public class HTTPRequest {
 	 * This method has to be called before execute() but can't
 	 * be called after execute() has been called.
 	 *
-	 * @return			This objects enabling method chaining.
-	 * @throws	IOException	Thrown if this method was called after execute() has been called.
+	 * @return				This objects enabling method chaining.
+	 * @throws	IOException		Thrown if this method was called after execute() has been called.
 	 */
 	public HTTPRequest prepare() throws IOException {
 		if (this.executed) {
@@ -199,8 +199,8 @@ public class HTTPRequest {
 	 * with UTF-8 encoding.
 	 * This method can only be called once per object.
 	 *
-	 * @return			This objects enabling method chaining.
-	 * @throws	IOException	Thrown if execute() has been called before.
+	 * @return				This objects enabling method chaining.
+	 * @throws	IOException		Thrown if execute() has been called before.
 	 */
 	public HTTPRequest execute() throws IOException {
 		if (this.executed) {
@@ -240,9 +240,9 @@ public class HTTPRequest {
 	 * after this method finishes.
 	 * This method can only get called after execute() has been called.
 	 *
-	 * @return			This objects enabling method chaining.
-	 * @throws	IOException	Thrown if this request hasn't been executed before.
-	 * @throws	ParseException	Thrown if the response couldn't be parsed because of invalid format.
+	 * @return				This objects enabling method chaining.
+	 * @throws	IOException		Thrown if this request hasn't been executed before.
+	 * @throws	ParseException		Thrown if the response couldn't be parsed because of invalid format.
 	 */
 	public HTTPRequest parse() throws IOException, ParseException {
 		if (!this.executed) {
@@ -285,8 +285,8 @@ public class HTTPRequest {
 	 * Returns the complete response of this request as string.
 	 * This method can only get called after execute() has been called.
 	 *
-	 * @return			The complete response as string.
-	 * @throws	IOException	Thrown if this request hasn't been executed before.
+	 * @return				The complete response as string.
+	 * @throws	IOException		Thrown if this request hasn't been executed before.
 	 */
 	public String getRawResponse() throws IOException {
 		if (!this.executed) {
@@ -301,8 +301,8 @@ public class HTTPRequest {
 	 * This method can only get called after execute() and parse()
 	 * have been called.
 	 *
-	 * @return			The complete response header as string.
-	 * @throws	IOException	Thrown if this request hasn't been executed or parsed before.
+	 * @return				The complete response header as string.
+	 * @throws	IOException		Thrown if this request hasn't been executed or parsed before.
 	 */
 	public String getRawHeader() throws IOException {
 		if (!this.executed) {
@@ -320,8 +320,8 @@ public class HTTPRequest {
 	 * This method can only get called after execute() and parse()
 	 * have been called.
 	 *
-	 * @return			The complete response body as string.
-	 * @throws	IOException	Thrown if this request hasn't been executed or parsed before.
+	 * @return				The complete response body as string.
+	 * @throws	IOException		Thrown if this request hasn't been executed or parsed before.
 	 */
 	public String getRawBody() throws IOException {
 		if (!this.executed) {
@@ -339,8 +339,8 @@ public class HTTPRequest {
 	 * This method can only get called after execute() and parse()
 	 * have been called.
 	 *
-	 * @return			The HTTP status code of this request.
-	 * @throws	IOException	Thrown if this request hasn't been executed or parsed before.
+	 * @return				The HTTP status code of this request.
+	 * @throws	IOException		Thrown if this request hasn't been executed or parsed before.
 	 */
 	public int getStatusCode() throws IOException {
 		if (!this.executed) {
@@ -358,8 +358,8 @@ public class HTTPRequest {
 	 * This method can only get called after execute() and parse()
 	 * have been called.
 	 *
-	 * @return			The HTTP status of this request.
-	 * @throws	IOException	Thrown if this request hasn't been executed or parsed before.
+	 * @return				The HTTP status of this request.
+	 * @throws	IOException		Thrown if this request hasn't been executed or parsed before.
 	 */
 	public String getStatusText() throws IOException {
 		if (!this.executed) {
@@ -377,8 +377,8 @@ public class HTTPRequest {
 	 * This method can only get called after execute() and parse()
 	 * have been called.
 	 *
-	 * @return			True if the HTTP status code of this request is 200, false otherwise
-	 * @throws	IOException	Thrown if this request hasn't been executed or parsed before.
+	 * @return				True if the HTTP status code of this request is 200, false otherwise.
+	 * @throws	IOException		Thrown if this request hasn't been executed or parsed before.
 	 */
 	public boolean urlExists() throws IOException {
 		if (!this.executed) {
@@ -398,8 +398,8 @@ public class HTTPRequest {
 	 * This method can only get called after execute() and parse()
 	 * have been called.
 	 *
-	 * @return			Last-Modified date as Java Date object.
-	 * @throws	IOException	Thrown if this request hasn't been executed or parsed before.
+	 * @return				Last-Modified date as Java Date object.
+	 * @throws	IOException		Thrown if this request hasn't been executed or parsed before.
 	 */
 	public Date getLastModifiedDate() throws IOException {
 		if (!this.executed) {

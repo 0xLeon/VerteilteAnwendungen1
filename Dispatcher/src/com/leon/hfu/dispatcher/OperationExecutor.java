@@ -29,12 +29,12 @@ public class OperationExecutor implements Runnable {
 	private F operation = null;
 
 	/**
-	 * Parameter for first operation execution
+	 * Parameter for first operation execution.
 	 */
 	private int x = 0;
 
 	/**
-	 * ResultCollector saving operation results
+	 * ResultCollector saving operation results.
 	 */
 	private ResultCollector resultCollector = null;
 
@@ -42,8 +42,8 @@ public class OperationExecutor implements Runnable {
 	 * Creates a new OperationExecutor object and saves necessary data.
 	 *
 	 * @param	operation		Operation object
-	 * @param	x			Parameter for first operation execution
-	 * @param	resultCollector		ResultCollector saving operation results
+	 * @param	x			Parameter for first operation execution.
+	 * @param	resultCollector		ResultCollector saving operation results.
 	 */
 	public OperationExecutor(F operation, int x, ResultCollector resultCollector) {
 		this.operation = operation;

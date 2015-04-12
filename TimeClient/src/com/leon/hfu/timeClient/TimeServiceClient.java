@@ -33,8 +33,8 @@ public class TimeServiceClient {
 	 * A Time Service has to be running on TCP port 75 on the
 	 * specified server.
 	 *
-	 * @param	serverAddress		Server address running a Time Service on TCP port 75
-	 * @return				Current date as String
+	 * @param	serverAddress		Server address running a Time Service on TCP port 75.
+	 * @return				Current date as String.
 	 * @throws	IOException		Thrown when there is an error when trying to receive the current date.
 	 */
 	public static String dateFromServer(String serverAddress) throws IOException {
@@ -46,8 +46,8 @@ public class TimeServiceClient {
 	 * A Time Service has to be running on TCP port 75 on the
 	 * specified server.
 	 *
-	 * @param	serverAddress		Server address running a Time Service on TCP port 75
-	 * @return				Current time as String
+	 * @param	serverAddress		Server address running a Time Service on TCP port 75.
+	 * @return				Current time as String.
 	 * @throws	IOException		Thrown when there is an error when trying to receive the current time.
 	 */
 	public static String timeFromServer(String serverAddress) throws IOException {
@@ -58,8 +58,8 @@ public class TimeServiceClient {
 	 * Sends a message to a given server on TCP port 75.
 	 * Returns the answer from the server as string.
 	 *
-	 * @param	serverAddress		Server address running a Time Service on port 75
-	 * @param	message			Message sent to Time Service
+	 * @param	serverAddress		Server address running a Time Service on port 75.
+	 * @param	message			Message sent to Time Service.
 	 * @return				The answer from Time Service as String.
 	 * @throws	IOException		Thrown when there is an error when trying to communicate with the Time Service.
 	 */

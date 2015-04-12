@@ -49,7 +49,7 @@ public class TimeServiceClientProgram implements CommandLineProgram {
 
 	/**
 	 * Initializes this program.
-	 * Creates a Scanner instance on STDIN and promts for the server address
+	 * Creates a Scanner instance on STDIN and promts for the server address.
 	 *
 	 * @param	args		Command line arguments
 	 * @see		CommandLineProgram#initialize(String[])
@@ -64,10 +64,10 @@ public class TimeServiceClientProgram implements CommandLineProgram {
 
 	/**
 	 * Executes the main part of this program.
-	 * Promots for a command ID and executes the related program part.
+	 * Promts for a command ID and executes the related program part.
 	 * This includes getting the current date and time from a server.
 	 *
-	 * @throws	CommandLineException		Thrown to controll programm execution
+	 * @throws	CommandLineException		Thrown to control programm execution.
 	 * @see		CommandLineProgram#execute()
 	 */
 	@Override

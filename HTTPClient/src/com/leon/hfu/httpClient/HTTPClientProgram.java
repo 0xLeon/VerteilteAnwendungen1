@@ -69,7 +69,7 @@ public class HTTPClientProgram implements CommandLineProgram {
 	 * Promts for an URL and executes an HTTP request with the given URL.
 	 * Displays various information about the response.
 	 *
-	 * @throws	CommandLineException		Thrown to control programm execution.
+	 * @throws	CommandLineException		Thrown to control program execution.
 	 * @see		CommandLineProgram#execute()
 	 */
 	@Override

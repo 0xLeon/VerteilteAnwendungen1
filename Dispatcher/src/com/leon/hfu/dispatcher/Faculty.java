@@ -19,7 +19,7 @@ package com.leon.hfu.dispatcher;
 
 /**
  * Implements the given F interface, where F#f calculates the
- * faculty of the given parameter
+ * faculty of the given parameter.
  *
  * @author		Stefan Hahn
  */
@@ -28,7 +28,7 @@ public class Faculty implements F {
 	 * Calculates the faculty of the given param.
 	 *
 	 * @param	x		Parameter
-	 * @return			Faculty of fven parameter
+	 * @return			Faculty of given parameter.
 	 * @see		F#f
 	 */
 	@Override

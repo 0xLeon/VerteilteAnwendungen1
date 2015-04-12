@@ -18,7 +18,7 @@
 package com.leon.hfu.util.commandLine;
 
 /**
- * Execption used to controll the execution of a CommandLineProgram program.
+ * Execption used to control the execution of a CommandLineProgram program.
  * The main method CommandLineProgram#execute() is able to continue or break
  * the program execution or can wrap errors which would cause the whole program
  * to exit.
@@ -43,9 +43,9 @@ public class CommandLineException extends Exception {
 	/**
 	 * Creates a new CommandLineExecption instance with specified cause.
 	 * The exception type is always CommandLineExceptionType#ERROR when
-	 * created with this constructor
+	 * created with this constructor.
 	 *
-	 * @param	e		The causing exception
+	 * @param	e		The causing exception.
 	 */
 	public CommandLineException(Throwable e) {
 		this(CommandLineExceptionType.ERROR, e);

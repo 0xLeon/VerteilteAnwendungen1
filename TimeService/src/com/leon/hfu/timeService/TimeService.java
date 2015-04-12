@@ -36,9 +36,9 @@ public class TimeService {
 
 	/**
 	 * Entrance point for the program execution.
-	 * Creates a server socket listening on port specified by #PORT.
-	 * Blocks till connection is established and handles only one
-	 * connection at once.
+	 * Creates a server socket listening on port specified by #PORT constant.
+	 * Blocks till connection is established and handles only one connection
+	 * at once.
 	 *
 	 * @param	args		Command line arguments
 	 */

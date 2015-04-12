@@ -42,7 +42,7 @@ public class ResultCollector {
 	/**
 	 * Creates a new ResultCollector object and initialized the local array.
 	 *
-	 * @param	n		Amount of values to be safed
+	 * @param	n		Amount of values to be safed.
 	 */
 	public ResultCollector(int n) {
 		this.n = n;
@@ -54,8 +54,8 @@ public class ResultCollector {
 	 * Saves a given value on position i in a local array.
 	 * This method is thread safe.
 	 *
-	 * @param	i		Position in local array
-	 * @param	result		Value to be safed
+	 * @param	i		Position in local array.
+	 * @param	result		Value to be safed.
 	 */
 	public synchronized void pushResult(int i, int result) {
 		if ((i > -1) && (i < this.n)) {
@@ -72,7 +72,7 @@ public class ResultCollector {
 	 * Returns the complete local array.
 	 * This method is thread safe.
 	 *
-	 * @return			The complete local array
+	 * @return			The complete local array.
 	 */
 	public synchronized int[] getResults() {
 		return this.results;

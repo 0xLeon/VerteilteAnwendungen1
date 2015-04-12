@@ -19,7 +19,7 @@ package com.leon.hfu.util.commandLine;
 
 /**
  * Handles execution of instances. See the #run() method
- * for more information
+ * for more information.
  *
  * @author		Stefan Hahn
  */

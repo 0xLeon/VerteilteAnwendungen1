@@ -38,9 +38,9 @@ public interface CommandLineProgram {
 	/**
 	 * Main method which is called in an endless loop.
 	 * Ths method contains the function of the program.
-	 * The program flow can be controlled with CommandLineExceptions
+	 * The program flow can be controlled with CommandLineExceptions.
 	 *
-	 * @throws	CommandLineException		Thrown to controll the program flow
+	 * @throws	CommandLineException		Thrown to control program execution.
 	 * @see		CommandLineException#getType()
 	 */
 	public void execute() throws CommandLineException;
