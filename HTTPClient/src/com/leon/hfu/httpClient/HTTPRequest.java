@@ -241,9 +241,14 @@ public class HTTPRequest {
 	 * This method can only get called after execute() has been called.
 	 *
 	 * @return			This objects enabling method chaining.
+	 * @throws	IOException	Thrown if this request hasn't been executed before.
 	 * @throws	ParseException	Thrown if the response couldn't be parsed because of invalid format.
 	 */
-	public HTTPRequest parse() throws ParseException {
+	public HTTPRequest parse() throws IOException, ParseException {
+		if (!this.executed) {
+			throw new IOException("Request has to be executed");
+		}
+
 		if (this.parsed) {
 			return this;
 		}
