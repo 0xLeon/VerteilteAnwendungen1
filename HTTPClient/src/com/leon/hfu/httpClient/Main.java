@@ -20,18 +20,20 @@ package com.leon.hfu.httpClient;
 import com.leon.hfu.util.commandLine.CommandLineExecutor;
 
 /**
- *
+ * Main class taking care of program execution.
  *
  * @author		Stefan Hahn
  */
 public class Main {
 	/**
-	 *
+	 * HTTPClientProgram instance holding the main program.
 	 */
 	public static HTTPClientProgram program;
 
 	/**
-	 *
+	 * Starts this program.
+	 * Creates an instance of HTTPClientProgram and passes it
+	 * to the executing method.
 	 *
 	 * @param	args		Command line arguments
 	 */

@@ -30,25 +30,34 @@ import java.util.Scanner;
 import java.util.TimeZone;
 
 /**
- *
+ * Represents a simple HTTP client program which prompts
+ * for an URL and fires an HTTP request. Display some information
+ * and the content of the resulting response.
  *
  * @author		Stefan Hahn
  */
 public class HTTPClientProgram implements CommandLineProgram {
+	/**
+	 * Formater used to display dates in human readable form.
+	 */
 	private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd MMM yyyy HH:mm:ss z");
+
 	/**
 	 * Scanner instance used to read from STDIN.
 	 */
 	private Scanner scanner;
 
+	// static initializer
 	static {
 		HTTPClientProgram.DATE_FORMAT.setTimeZone(TimeZone.getTimeZone("GMT"));
 	}
 
 	/**
-	 *
+	 * Initializes this program.
+	 * Creates a Scanner instance on STDIN.
 	 *
 	 * @param	args		Command line arguments
+	 * @see		CommandLineProgram#initialize(String[])
 	 */
 	@Override
 	public void initialize(String[] args) {
@@ -56,8 +65,12 @@ public class HTTPClientProgram implements CommandLineProgram {
 	}
 
 	/**
+	 * Executes the main part of this program.
+	 * Promts for an URL and executes an HTTP request with the given URL.
+	 * Displays various information about the response.
 	 *
 	 * @throws	CommandLineException
+	 * @see		CommandLineProgram#execute()
 	 */
 	@Override
 	public void execute() throws CommandLineException {
@@ -104,7 +117,10 @@ public class HTTPClientProgram implements CommandLineProgram {
 	}
 
 	/**
+	 * Finishes this program.
+	 * Closes the Scanner instance running on STDIN.
 	 *
+	 * @see		CommandLineProgram#finish()
 	 */
 	@Override
 	public void finish() {
