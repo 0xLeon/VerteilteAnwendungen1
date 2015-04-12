@@ -404,8 +404,6 @@ public class HTTPRequest {
 			throw new IOException("Request has to be parsed");
 		}
 
-		// Last-Modified: Fri, 10 Apr 2015 19:08:52 GMT
-
 		try {
 			if (this.headerFields.containsKey("last-modified")) {
 				return HTTPRequest.HEADER_DATE_FORMAT.parse(this.headerFields.get("last-modified"));
