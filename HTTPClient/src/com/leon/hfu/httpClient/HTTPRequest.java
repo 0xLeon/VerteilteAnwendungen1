@@ -398,7 +398,7 @@ public class HTTPRequest {
 	 * This method can only get called after execute() and parse()
 	 * have been called.
 	 *
-	 * @return
+	 * @return			Last-Modified date as Java Date object.
 	 * @throws	IOException	Thrown if this request hasn't been executed or parsed before.
 	 */
 	public Date getLastModifiedDate() throws IOException {
