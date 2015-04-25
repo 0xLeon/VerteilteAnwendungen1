@@ -70,7 +70,7 @@ public class Random extends HttpServlet {
 		if (request.getSession().getAttribute("counter") != null) {
 			counter = ((Integer) request.getSession().getAttribute("counter")) + 1;
 		}
-		
+
 		response.setContentType("text/html");
 		response.getWriter().println("Zufallszahl: " + (lower + Math.round((Math.random() * (upper - lower)))) + "<br />");
 		response.getWriter().println("Sie rufen diese Seite zum " + counter + ". Mal auf.<br />");
