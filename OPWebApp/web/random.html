@@ -7,6 +7,7 @@
 			/* <![CDATA[ */
 			input {
 				margin-right: 5px;
+				width: 60px;
 			}
 			/* ]]> */
 		</style>
@@ -17,8 +18,8 @@
 		-->
 		<div>
 			<form method="post" action="/OPWebApp/Rand">
-				<input type="text" id="lower" name="lower" placeholder="lower" size="5" />
-				<input type="text" id="upper" name="upper" placeholder="upper" size="5" />
+				<input type="number" id="lower" name="lower" placeholder="lower" size="5" required="required" />
+				<input type="number" id="upper" name="upper" placeholder="upper" size="5" required="required" />
 				<br />
 				<button type="submit">Start</button>
 			</form>
