@@ -46,6 +46,7 @@ public class Random extends HttpServlet {
 		String upperString = request.getParameter("upper");
 		int lower;
 		int upper;
+		Integer counter = 1;
 		
 		if ((lowerString == null) || (upperString == null)) {
 			response.sendRedirect("/OPWebApp/invalid-values.html");
@@ -65,7 +66,15 @@ public class Random extends HttpServlet {
 			response.sendRedirect("/OPWebApp/invalid-values.html");
 			return;
 		}
+
+		if (request.getSession().getAttribute("counter") != null) {
+			counter = ((Integer) request.getSession().getAttribute("counter")) + 1;
+		}
 		
-		response.getWriter().println(lower + Math.round((Math.random() * (upper - lower))));
+		response.setContentType("text/html");
+		response.getWriter().println("Zufallszahl: " + (lower + Math.round((Math.random() * (upper - lower)))) + "<br />");
+		response.getWriter().println("Sie rufen diese Seite zum " + counter + ". Mal auf.<br />");
+		response.getWriter().println("<a href=\"/OPWebApp/random.html\">Zurück</a>");
+		request.getSession().setAttribute("counter", counter);
 	}
 }
