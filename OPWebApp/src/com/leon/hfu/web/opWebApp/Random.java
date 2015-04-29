@@ -49,8 +49,7 @@ public class Random extends HttpServlet {
 		Integer counter = 1;
 		
 		if ((lowerString == null) || (upperString == null)) {
-			response.sendRedirect("/OPWebApp/invalid-values.html");
-			return;
+			throw new IllegalArgumentException("Missing input");
 		}
 		
 		try {
@@ -58,13 +57,11 @@ public class Random extends HttpServlet {
 			upper = Integer.parseInt(upperString, 10);
 		}
 		catch (NumberFormatException e) {
-			response.sendRedirect("/OPWebApp/invalid-values.html");
-			return;
+			throw new IllegalArgumentException("Invalid input", e);
 		}
 		
 		if (lower >= upper) {
-			response.sendRedirect("/OPWebApp/invalid-values.html");
-			return;
+			throw new IllegalArgumentException("Invalid input, upper must be larger than lower.");
 		}
 
 		if (request.getSession().getAttribute("counter") != null) {
