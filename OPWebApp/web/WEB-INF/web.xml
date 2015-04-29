@@ -7,4 +7,7 @@
 		<exception-type>java.lang.IllegalArgumentException</exception-type>
 		<location>/invalid-values.html</location>
 	</error-page>
+	<welcome-file-list>
+		<welcome-file>random.html</welcome-file>
+	</welcome-file-list>
 </web-app>
