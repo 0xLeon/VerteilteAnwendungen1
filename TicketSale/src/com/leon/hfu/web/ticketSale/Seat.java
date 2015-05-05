@@ -35,7 +35,7 @@ public class Seat {
 		return this.customer;
 	}
 
-	public synchronized void reserve(Customer customer) throws EventException {
+	public void reserve(Customer customer) throws EventException {
 		if (this.status != SeatStatus.FREE) {
 			throw new EventException();
 		}
@@ -44,7 +44,7 @@ public class Seat {
 		this.customer = customer;
 	}
 
-	public synchronized void buy(Customer customer) throws EventException {
+	public void buy(Customer customer) throws EventException {
 		if (this.status == SeatStatus.SOLD) {
 			throw new EventException();
 		}
@@ -57,7 +57,7 @@ public class Seat {
 		this.customer = customer;
 	}
 
-	public synchronized void cancel(Customer customer) throws EventException {
+	public void cancel(Customer customer) throws EventException {
 		if (this.status == SeatStatus.FREE) {
 			throw new EventException();
 		}
@@ -70,7 +70,7 @@ public class Seat {
 		this.customer = null;
 	}
 
-	public synchronized void cancelReservation() {
+	public void cancelReservation() {
 		if (this.status == SeatStatus.RESERVED) {
 			this.status = SeatStatus.FREE;
 			this.customer = Customer.DEFAULT_CUSTOMER;

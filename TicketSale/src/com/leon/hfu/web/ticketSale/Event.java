@@ -27,30 +27,36 @@ public class Event {
 	public void reserveSeats(int[] seatIDs, Customer customer) throws EventException {
 		this.checkCustomer(customer);
 
-		// TODO: transaction style, revert all if an error occurs
-		for (int seatID: seatIDs) {
-			this.checkSeatID(seatID);
-			this.seats[seatID].reserve(customer);
+		synchronized (this) {
+			// TODO: transaction style, revert all if an error occurs
+			for (int seatID : seatIDs) {
+				this.checkSeatID(seatID);
+				this.seats[seatID].reserve(customer);
+			}
 		}
 	}
 
 	public void buySeats(int[] seatIDs, Customer customer) throws EventException {
 		this.checkCustomer(customer);
 
-		// TODO: transaction style, revert all if an error occurs
-		for (int seatID: seatIDs) {
-			this.checkSeatID(seatID);
-			this.seats[seatID].buy(customer);
+		synchronized (this) {
+			// TODO: transaction style, revert all if an error occurs
+			for (int seatID : seatIDs) {
+				this.checkSeatID(seatID);
+				this.seats[seatID].buy(customer);
+			}
 		}
 	}
 
 	public void cancelSeats(int[] seatIDs, Customer customer) throws EventException {
 		this.checkCustomer(customer);
 
-		// TODO: transaction style, revert all if an error occurs
-		for (int seatID: seatIDs) {
-			this.checkSeatID(seatID);
-			this.seats[seatID].cancel(customer);
+		synchronized (this) {
+			// TODO: transaction style, revert all if an error occurs
+			for (int seatID : seatIDs) {
+				this.checkSeatID(seatID);
+				this.seats[seatID].cancel(customer);
+			}
 		}
 	}
 
@@ -59,9 +65,11 @@ public class Event {
 			throw new EventException();
 		}
 
-		for (Seat seat: this.seats) {
-			if (seat.getStatus() == SeatStatus.RESERVED) {
-				seat.cancelReservation();
+		synchronized (this) {
+			for (Seat seat : this.seats) {
+				if (seat.getStatus() == SeatStatus.RESERVED) {
+					seat.cancelReservation();
+				}
 			}
 		}
 	}
