@@ -8,9 +8,9 @@ public class Seat {
 
 	private SeatStatus status;
 
-	private Customer customer = Customer.DEFAULT_CUSTOMER;
+	private User customer = User.DEFAULT_USER;
 
-	public Seat(int seatID, SeatStatus status, Customer customer) {
+	public Seat(int seatID, SeatStatus status, User customer) {
 		this.seatID = seatID;
 		this.status = status;
 
@@ -31,11 +31,11 @@ public class Seat {
 		return this.status;
 	}
 
-	public Customer getCustomer() {
+	public User getCustomer() {
 		return this.customer;
 	}
 
-	public void reserve(Customer customer) throws EventException {
+	public void reserve(User customer) throws EventException {
 		if (this.status != SeatStatus.FREE) {
 			throw new EventException();
 		}
@@ -44,7 +44,7 @@ public class Seat {
 		this.customer = customer;
 	}
 
-	public void buy(Customer customer) throws EventException {
+	public void buy(User customer) throws EventException {
 		if (this.status == SeatStatus.SOLD) {
 			throw new EventException();
 		}
@@ -57,7 +57,7 @@ public class Seat {
 		this.customer = customer;
 	}
 
-	public void cancel(Customer customer) throws EventException {
+	public void cancel(User customer) throws EventException {
 		if (this.status == SeatStatus.FREE) {
 			throw new EventException();
 		}
@@ -73,7 +73,7 @@ public class Seat {
 	public void cancelReservation() {
 		if (this.status == SeatStatus.RESERVED) {
 			this.status = SeatStatus.FREE;
-			this.customer = Customer.DEFAULT_CUSTOMER;
+			this.customer = User.DEFAULT_USER;
 		}
 	}
 

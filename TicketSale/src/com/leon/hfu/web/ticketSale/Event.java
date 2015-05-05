@@ -24,7 +24,7 @@ public class Event {
 		}
 	}
 
-	public void reserveSeats(int[] seatIDs, Customer customer) throws EventException {
+	public void reserveSeats(int[] seatIDs, User customer) throws EventException {
 		this.checkCustomer(customer);
 
 		synchronized (this) {
@@ -36,7 +36,7 @@ public class Event {
 		}
 	}
 
-	public void buySeats(int[] seatIDs, Customer customer) throws EventException {
+	public void buySeats(int[] seatIDs, User customer) throws EventException {
 		this.checkCustomer(customer);
 
 		synchronized (this) {
@@ -48,7 +48,7 @@ public class Event {
 		}
 	}
 
-	public void cancelSeats(int[] seatIDs, Customer customer) throws EventException {
+	public void cancelSeats(int[] seatIDs, User customer) throws EventException {
 		this.checkCustomer(customer);
 
 		synchronized (this) {
@@ -75,8 +75,8 @@ public class Event {
 	}
 
 
-	private void checkCustomer(Customer customer) throws EventException {
-		if ((customer == null) || (customer.equals(Customer.DEFAULT_CUSTOMER))) {
+	private void checkCustomer(User customer) throws EventException {
+		if ((customer == null) || (customer.equals(User.DEFAULT_USER))) {
 			throw new EventException();
 		}
 	}

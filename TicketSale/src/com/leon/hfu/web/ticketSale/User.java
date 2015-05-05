@@ -4,6 +4,8 @@ package com.leon.hfu.web.ticketSale;
  * @author		Stefan Hahn
  */
 public class User {
+	public static final User DEFAULT_USER = new User(0, "default");
+
 	private int userID;
 	private String username;
 	private String[] groups;
