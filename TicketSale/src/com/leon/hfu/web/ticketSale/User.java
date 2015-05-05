@@ -4,13 +4,15 @@ package com.leon.hfu.web.ticketSale;
  * @author		Stefan Hahn
  */
 public class User {
-	public static final User DEFAULT_USER = new User(0, "default");
+	// TODO: add password hashes for correct login
+	public static final User DEFAULT_USER = new User(0, "default", "", new String[0]);
 
 	private int userID;
 	private String username;
+	private String passwordHash;
 	private String[] groups;
 
-	public User(int userID, String username) {
+	public User(int userID, String username, String passwordHash, String[] groups) {
 		if (userID < 0) {
 			throw new IllegalArgumentException();
 		}
@@ -21,6 +23,8 @@ public class User {
 
 		this.userID = userID;
 		this.username = username;
+		this.passwordHash = passwordHash;
+		this.groups = groups;
 	}
 
 	public int getUserID() {
