@@ -53,4 +53,12 @@ public class User {
 
 		return ((User) obj).getUserID() == this.getUserID();
 	}
+
+	public static User getUserByUserID(int userID) {
+		if (userID < 0) {
+			throw new IllegalArgumentException();
+		}
+
+		return UserHandler.getInstance().getUsersByID(new int[] {userID})[0];
+	}
 }
