@@ -1,5 +1,6 @@
 package com.leon.hfu.web.ticketSale;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -55,6 +56,17 @@ public final class Core {
 			response.addCookie(new Cookie("ticketsale_userID", Integer.toString(userID)));
 		}
 	}
+
+	public User getUser(HttpServletRequest request) throws ServletException {
+		Object rawUserObject = request.getSession().getAttribute("user");
+
+		if ((rawUserObject == null) || (rawUserObject.getClass() != User.class)) {
+			throw new ServletException("Invalid User.");
+		}
+
+		return ((User) rawUserObject);
+	}
+
 	public Event getEvent() {
 		return this.event;
 	}
