@@ -3,7 +3,7 @@ package com.leon.hfu.web.ticketSale;
 /**
  * @author		Stefan Hahn
  */
-public class EventException extends RuntimeException {
+public class EventException extends Exception {
 	public EventException(String message, Throwable cause) {
 		super(message, cause);
 	}
