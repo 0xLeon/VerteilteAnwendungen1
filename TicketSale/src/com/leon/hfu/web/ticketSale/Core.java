@@ -10,7 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 public final class Core {
 	private static Core instance = null;
 
-	private Core() { }
+	private Event event = null;
+
+	private Core() {
+		this.event = new Event(null, 100);
+	}
 
 	public static Core getInstance() {
 		if (Core.instance == null) {
@@ -50,5 +54,8 @@ public final class Core {
 			request.getSession().setAttribute("user", user);
 			response.addCookie(new Cookie("ticketsale_userID", Integer.toString(userID)));
 		}
+	}
+	public Event getEvent() {
+		return this.event;
 	}
 }
