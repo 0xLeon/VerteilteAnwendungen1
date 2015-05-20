@@ -8,7 +8,7 @@
 		<t:browserUpgrade />
 		<t:nav />
 
-		<t:mainContainer>
+		<t:mainContainer containerID="index">
 			<div class="col-md-7">
 				<div id="event-1" class="event">
 					<c:set var="i" value="${0}" scope="page" />
