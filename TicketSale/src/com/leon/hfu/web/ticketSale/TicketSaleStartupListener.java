@@ -8,9 +8,10 @@ import javax.servlet.annotation.WebListener;
  * @author		Stefan Hahn
  */
 @WebListener
-public class TicketSaleStartup implements ServletContextListener {
+public class TicketSaleStartupListener implements ServletContextListener {
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
+		sce.getServletContext().setAttribute("core", Core.getInstance());
 		sce.getServletContext().setAttribute("event", Core.getInstance().getEvent());
 	}
 
