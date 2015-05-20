@@ -17,6 +17,7 @@ import java.util.ArrayList;
  */
 @WebServlet(name = "TicketHandlerServlet", urlPatterns = { "/Buy", "/Reserve" })
 public class TicketHandlerServlet extends HttpServlet {
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Core.getInstance().initSession(request, response);
 
@@ -34,6 +35,7 @@ public class TicketHandlerServlet extends HttpServlet {
 		}
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		throw new ServletException("Method not allowed!");
 	}
