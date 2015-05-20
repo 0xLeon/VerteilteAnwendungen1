@@ -46,3 +46,7 @@ body {
 .seat-legend .seat {
 	margin-bottom: -0.25em;
 }
+
+#index.container {
+	margin-top: 3em;
+}
