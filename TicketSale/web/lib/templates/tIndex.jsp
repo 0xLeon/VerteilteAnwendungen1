@@ -40,6 +40,19 @@
 					<button type="button" class="btn btn-primary btn-block">Kaufen</button>
 					<button type="button" class="btn btn-default btn-block">Reservieren</button>
 				</div>
+				<div class="seat-legend">
+					<ul class="list-group">
+						<li class="list-group-item">
+							<span class="seat seat-free"></span>&nbsp;Frei
+						</li>
+						<li class="list-group-item">
+							<span class="seat seat-reserved"></span>&nbsp;Reserviert
+						</li>
+						<li class="list-group-item">
+							<span class="seat seat-sold"></span>&nbsp;Verkauft
+						</li>
+					</ul>
+				</div>
 			</div>
 			<div class="col-md-3"></div>
 		</t:mainContainer>
