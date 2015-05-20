@@ -33,7 +33,7 @@ public class TicketHandlerServlet extends HttpServlet {
 				throw new ServletException("Invalid action.");
 		}
 	}
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		throw new ServletException("Method not allowed!");
 	}
@@ -43,7 +43,7 @@ public class TicketHandlerServlet extends HttpServlet {
 
 		try {
 			Core.getInstance().getEvent().buySeats(seatIDs, Core.getInstance().getUser(request));
-			request.getRequestDispatcher("/TicketSale/lib/templates/buyResult.jsp").forward(request, response);
+			ServletUtil.getRequestDispatcher("/TicketSale/lib/templates/tSuccess.jsp", this.getServletContext()).forward(request, response);
 		}
 		catch (EventException | IOException e) {
 			throw new ServletException(e);
@@ -55,7 +55,7 @@ public class TicketHandlerServlet extends HttpServlet {
 
 		try {
 			Core.getInstance().getEvent().reserveSeats(seatIDs, Core.getInstance().getUser(request));
-			request.getRequestDispatcher("/TicketSale/lib/templates/reserveResult.jsp").forward(request, response);
+			ServletUtil.getRequestDispatcher("/TicketSale/lib/templates/tSuccess.jsp", this.getServletContext()).forward(request, response);
 		}
 		catch (EventException | IOException e) {
 			throw new ServletException(e);
