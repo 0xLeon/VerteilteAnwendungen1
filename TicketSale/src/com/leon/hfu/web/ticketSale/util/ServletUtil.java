@@ -47,7 +47,7 @@ public class ServletUtil {
 		return (T) value;
 	}
 
-	public static RequestDispatcher getRequestDispatcher(String path, ServletContext servletContext) {
+	public synchronized static RequestDispatcher getRequestDispatcher(String path, ServletContext servletContext) {
 		if (!ServletUtil.requestDispatchers.containsKey(path)) {
 			ServletUtil.requestDispatchers.put(path, servletContext.getRequestDispatcher(path));
 		}
