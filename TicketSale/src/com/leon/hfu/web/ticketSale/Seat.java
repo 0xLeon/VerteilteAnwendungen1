@@ -35,6 +35,18 @@ public class Seat {
 		return this.customer;
 	}
 
+	public boolean isFree() {
+		return (this.status == SeatStatus.FREE);
+	}
+
+	public boolean isReserved() {
+		return (this.status == SeatStatus.RESERVED);
+	}
+
+	public boolean isSold() {
+		return (this.status == SeatStatus.SOLD);
+	}
+
 	public void reserve(User customer) throws EventException {
 		if (this.status != SeatStatus.FREE) {
 			throw new EventException();
