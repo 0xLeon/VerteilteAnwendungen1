@@ -1,13 +1,14 @@
 package com.leon.hfu.web.ticketSale;
 
 import java.util.Date;
+import java.util.Vector;
 
 /**
  * @author		Stefan Hahn
  */
 public class Event {
 	private Date date;
-	private Seat[] seats;
+	private Vector<Seat> seats;
 	private boolean reservationPossible;
 
 	public Event(Date date, int seatCount) {
@@ -17,11 +18,15 @@ public class Event {
 
 		// TODO: check date
 		this.date = date;
-		this.seats = new Seat[seatCount];
+		this.seats = new Vector<>(seatCount);
 
 		for (seatCount--; seatCount > -1; seatCount--) {
-			this.seats[seatCount] = new Seat(seatCount, SeatStatus.FREE, null);
+			this.seats.add(new Seat(seatCount, SeatStatus.FREE, null));
 		}
+	}
+
+	public Vector<Seat> getSeats() {
+		return this.seats;
 	}
 
 	public void reserveSeats(int[] seatIDs, User customer) throws EventException {
@@ -31,7 +36,7 @@ public class Event {
 			// TODO: transaction style, revert all if an error occurs
 			for (int seatID : seatIDs) {
 				this.checkSeatID(seatID);
-				this.seats[seatID].reserve(customer);
+				this.seats.get(seatID).reserve(customer);
 			}
 		}
 	}
@@ -43,7 +48,7 @@ public class Event {
 			// TODO: transaction style, revert all if an error occurs
 			for (int seatID : seatIDs) {
 				this.checkSeatID(seatID);
-				this.seats[seatID].buy(customer);
+				this.seats.get(seatID).buy(customer);
 			}
 		}
 	}
@@ -55,7 +60,7 @@ public class Event {
 			// TODO: transaction style, revert all if an error occurs
 			for (int seatID : seatIDs) {
 				this.checkSeatID(seatID);
-				this.seats[seatID].cancel(customer);
+				this.seats.get(seatID).cancel(customer);
 			}
 		}
 	}
@@ -66,11 +71,11 @@ public class Event {
 		}
 
 		synchronized (this) {
-			for (Seat seat : this.seats) {
+			this.seats.forEach(seat -> {
 				if (seat.getStatus() == SeatStatus.RESERVED) {
 					seat.cancelReservation();
 				}
-			}
+			});
 		}
 	}
 
@@ -82,7 +87,7 @@ public class Event {
 	}
 
 	private void checkSeatID(int seatID) throws EventException {
-		if ((seatID < 0) || (seatID >= this.seats.length)) {
+		if ((seatID < 0) || (seatID >= this.seats.size())) {
 			throw new EventException();
 		}
 	}
