@@ -20,8 +20,8 @@ public class Event {
 		this.date = date;
 		this.seats = new Vector<>(seatCount);
 
-		for (seatCount--; seatCount > -1; seatCount--) {
-			this.seats.add(new Seat(seatCount, SeatStatus.FREE, null));
+		for (int i = 0; i < seatCount; i++) {
+			this.seats.add(new Seat(i, SeatStatus.FREE, null));
 		}
 	}
 
