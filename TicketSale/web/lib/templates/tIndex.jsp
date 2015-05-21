@@ -33,8 +33,10 @@
 			</div>
 			<div class="col-md-2">
 				<div class="action-buttons">
-					<form method="post" action="/TicketSale/Buy">
-						<input type="hidden" id="action" name="action" value="buy" />
+					<form id="ticketForm" method="post" action="/TicketSale/HandleTicket">
+						<input type="hidden" id="ticketFormAction" name="ticketFormAction" value="buy" />
+
+						<!--<input type="hidden" id="seat-form-input-0" name="seatIDs[]" value="0" />-->
 					</form>
 
 					<button type="button" class="btn btn-primary btn-block">Kaufen</button>
