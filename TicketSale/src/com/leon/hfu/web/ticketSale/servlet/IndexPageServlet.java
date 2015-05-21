@@ -24,7 +24,7 @@ public class IndexPageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Core.getInstance().initSession(request, response);
 
-		request.setAttribute("title", "Index");
+		request.setAttribute("title", "Ticket Sale");
 		request.setAttribute("description", "");
 		request.setAttribute("user", Core.getInstance().getUser(request));
 
