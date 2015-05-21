@@ -39,8 +39,8 @@
 						<!--<input type="hidden" id="seat-form-input-0" name="seatIDs[]" value="0" />-->
 					</form>
 
-					<button type="button" class="btn btn-primary btn-block">Kaufen</button>
-					<button type="button" class="btn btn-default btn-block">Reservieren</button>
+					<button type="button" id="submitBuy" class="btn btn-primary btn-block">Kaufen</button>
+					<button type="button" id="submitReserve" class="btn btn-default btn-block">Reservieren</button>
 				</div>
 				<div class="seat-legend">
 					<ul class="list-group">
