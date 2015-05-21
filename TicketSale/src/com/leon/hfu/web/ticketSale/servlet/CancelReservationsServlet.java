@@ -31,7 +31,7 @@ public class CancelReservationsServlet extends HttpServlet {
 			throw new ServletException(e);
 		}
 
-		ServletUtil.getRequestDispatcher("/TicketSale/lib/templates/tSuccess.jsp", this.getServletContext()).forward(request, response);
+		ServletUtil.getRequestDispatcher("/lib/templates/tSuccess.jsp", this.getServletContext()).forward(request, response);
 	}
 
 	@Override
