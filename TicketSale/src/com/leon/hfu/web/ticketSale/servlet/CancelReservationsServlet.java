@@ -17,7 +17,7 @@ import java.io.IOException;
 @WebServlet(name = "CancelReservationsServlet", urlPatterns = { "/CancelReservations" })
 public class CancelReservationsServlet extends HttpServlet {
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Core.getInstance().initSession(request, response);
 
 		if (!Core.getInstance().getUser(request).isInGroup("user.admin")) {
@@ -35,7 +35,7 @@ public class CancelReservationsServlet extends HttpServlet {
 	}
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		throw new ServletException("Method not allowed!");
 	}
 }
