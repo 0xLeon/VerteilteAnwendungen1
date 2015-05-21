@@ -31,7 +31,7 @@
 					</c:forEach>
 				</div>
 			</div>
-			<div class="col-md-2 vertical-center">
+			<div class="col-md-2">
 				<div class="action-buttons">
 					<form method="post" action="/TicketSale/Buy">
 						<input type="hidden" id="action" name="action" value="buy" />
