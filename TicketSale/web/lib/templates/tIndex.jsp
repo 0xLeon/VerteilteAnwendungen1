@@ -11,7 +11,7 @@
 
 		<h1 class="text-center">${requestScope.title}</h1>
 		<t:mainContainer containerID="index">
-			<div class="col-md-7">
+			<div class="col-md-6">
 				<div id="event-1" class="event">
 					<c:set var="i" value="${0}" scope="page" />
 					<c:forEach var="seat" items="${applicationScope.event.seats}">
@@ -62,7 +62,7 @@
 					</ul>
 				</div>
 			</div>
-			<div class="col-md-3"></div>
+			<div class="col-md-4"></div>
 		</t:mainContainer>
 
 		<t:mainContainer>
