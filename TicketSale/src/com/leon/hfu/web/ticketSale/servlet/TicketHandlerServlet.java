@@ -21,7 +21,7 @@ public class TicketHandlerServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Core.getInstance().initSession(request, response);
 
-		String action = ServletUtil.getSingleRequestParameter(request, "action").toLowerCase();
+		String action = ServletUtil.getSingleRequestParameter(request, "ticketFormAction").toLowerCase();
 
 		switch (action) {
 			case "buy":
