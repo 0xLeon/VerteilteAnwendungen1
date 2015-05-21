@@ -14,18 +14,34 @@
 			<a class="navbar-brand" href="/TicketSale/Index">Ticket Salee</a>
 		</div>
 
-		<c:if test="${requestScope.user.userID == 0}">
-			<div id="navbar" class="navbar-collapse collapse">
-				<form class="navbar-form navbar-right" role="form">
-					<div class="form-group">
-						<input type="text" placeholder="Email" class="form-control">
-					</div>
-					<div class="form-group">
-						<input type="password" placeholder="Password" class="form-control">
-					</div>
-					<button type="submit" class="btn btn-success">Sign in</button>
-				</form>
-			</div>
-		</c:if>
+		<c:choose>
+			<c:when test="${requestScope.user.userID == 0}">
+				<div class="navbar-collapse collapse">
+					<form class="navbar-form navbar-right" role="form">
+						<div class="form-group">
+							<input type="text" placeholder="Email" class="form-control">
+						</div>
+						<div class="form-group">
+							<input type="password" placeholder="Password" class="form-control">
+						</div>
+						<button type="submit" class="btn btn-success">Sign in</button>
+					</form>
+				</div>
+			</c:when>
+			<c:otherwise>
+				<div id="user-${sessionScope.user.userID}">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dorpdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">${sessionScope.user.username} <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="#">Profil</a></li>
+								<c:if test="${sessionScope.user.isInGroup('user.admin')}"><li><a href="/TicketSale/CancelReservations">Reservierungen loeschen</a></li></c:if>
+								<li><a href="#">Logout</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</c:otherwise>
+		</c:choose>
 	</div>
 </nav>
