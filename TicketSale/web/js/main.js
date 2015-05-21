@@ -2,6 +2,21 @@ $(document).ready(function() {
 	$('.event > .seat').on('click', function() {
 		handleSeat($(this));
 	});
+
+	$('#submitBuy').on('click', function() {
+		$('#ticketFormAction').attr('value', 'buy');
+		$('#ticketForm').submit();
+	});
+
+	$('#submitReserve').on('click', function() {
+		$('#ticketFormAction').attr('value', 'reserve');
+		$('#ticketForm').submit();
+	});
+
+	$('#submitCancel').on('click', function() {
+		$('#ticketFormAction').attr('value', 'cancel');
+		$('#ticketForm').submit();
+	});
 });
 
 function handleSeat(seatNode) {
