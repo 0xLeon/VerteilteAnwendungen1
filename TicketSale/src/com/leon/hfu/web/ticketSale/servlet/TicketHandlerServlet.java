@@ -33,6 +33,10 @@ public class TicketHandlerServlet extends HttpServlet {
 			default:
 				throw new ServletException("Invalid action.");
 		}
+
+		request.setAttribute("title", "Erfolgreich | Ticket Sale");
+		request.setAttribute("description", "");
+		ServletUtil.getRequestDispatcher("/lib/templates/tSuccess.jsp", this.getServletContext()).forward(request, response);
 	}
 
 	@Override
@@ -45,9 +49,8 @@ public class TicketHandlerServlet extends HttpServlet {
 
 		try {
 			Core.getInstance().getEvent().buySeats(seatIDs, Core.getInstance().getUser(request));
-			ServletUtil.getRequestDispatcher("/TicketSale/lib/templates/tSuccess.jsp", this.getServletContext()).forward(request, response);
 		}
-		catch (EventException | IOException e) {
+		catch (EventException e) {
 			throw new ServletException(e);
 		}
 	}
@@ -57,9 +60,8 @@ public class TicketHandlerServlet extends HttpServlet {
 
 		try {
 			Core.getInstance().getEvent().reserveSeats(seatIDs, Core.getInstance().getUser(request));
-			ServletUtil.getRequestDispatcher("/TicketSale/lib/templates/tSuccess.jsp", this.getServletContext()).forward(request, response);
 		}
-		catch (EventException | IOException e) {
+		catch (EventException e) {
 			throw new ServletException(e);
 		}
 	}
