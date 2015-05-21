@@ -17,13 +17,13 @@
 					<c:forEach var="seat" items="${applicationScope.event.seats}">
 						<c:choose>
 							<c:when test="${seat.isFree()}">
-								<span id="seat-${seat.seatID}" class="seat seat-free"></span>
+								<span id="seat-${seat.seatID}" class="seat seat-free" data-id="${seat.seatID}">${seat.seatID}</span>
 							</c:when>
 							<c:when test="${seat.isReserved()}">
-								<span id="seat-${seat.seatID}" class="seat seat-reserved"></span>
+								<span id="seat-${seat.seatID}" class="seat seat-reserved${(seat.customer.userID == requestScope.user.userID) ? ' seat-own' : ''}" data-id="${seat.seatID}">${seat.seatID}</span>
 							</c:when>
 							<c:when test="${seat.isSold()}">
-								<span id="seat-${seat.seatID}" class="seat seat-sold"></span>
+								<span id="seat-${seat.seatID}" class="seat seat-sold${(seat.customer.userID == requestScope.user.userID) ? ' seat-own' : ''}" data-id="${seat.seatID}">${seat.seatID}</span>
 							</c:when>
 						</c:choose>
 
