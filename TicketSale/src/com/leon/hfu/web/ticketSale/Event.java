@@ -104,16 +104,15 @@ public class Event {
 		}
 	}
 
-
 	private void checkCustomer(User customer) throws EventException {
 		if ((customer == null) || (customer.equals(User.DEFAULT_USER))) {
-			throw new EventException();
+			throw new EventException("Invalid User.");
 		}
 	}
 
 	private void checkSeatID(int seatID) throws EventException {
 		if ((seatID < 0) || (seatID >= this.seats.size())) {
-			throw new EventException();
+			throw new EventException("Invalid seatID.");
 		}
 	}
 }
