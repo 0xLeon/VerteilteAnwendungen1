@@ -58,6 +58,12 @@ public final class Core {
 				user = User.DEFAULT_USER;
 			}
 
+			// TODO: remove, hard coded user for test purpose
+			try {
+				user = User.getUserByUserID(1); // user is Admin user Leon
+			}
+			catch (NoSuchUserException e) { }
+
 			request.getSession().setAttribute("user", user);
 			response.addCookie(new Cookie("ticketsale_userID", Integer.toString(user.getUserID())));
 		}
