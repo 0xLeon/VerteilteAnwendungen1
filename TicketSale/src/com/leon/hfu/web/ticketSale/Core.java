@@ -53,7 +53,7 @@ public final class Core {
 			}
 
 			request.getSession().setAttribute("user", user);
-			response.addCookie(new Cookie("ticketsale_userID", Integer.toString(userID)));
+			response.addCookie(new Cookie("ticketsale_userID", Integer.toString(user.getUserID())));
 		}
 	}
 
