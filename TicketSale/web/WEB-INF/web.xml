@@ -6,6 +6,14 @@
 	<welcome-file-list>
 		<welcome-file>Index</welcome-file>
 	</welcome-file-list>
+	<error-page>
+		<exception-type>com.leon.hfu.web.ticketSale.EventException</exception-type>
+		<location>/Error</location>
+	</error-page>
+	<error-page>
+		<exception-type>javax.servlet.ServletException</exception-type>
+		<location>/Error</location>
+	</error-page>
 	<jsp-config>
 		<taglib>
 			<taglib-uri>http://java.sun.com/jsp/jstl/core</taglib-uri>
