@@ -9,4 +9,6 @@
 
 	<t:scripts />
 	<t:styles />
+
+	<jsp:doBody />
 </head>
