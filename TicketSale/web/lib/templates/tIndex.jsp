@@ -10,7 +10,7 @@
 		<t:nav />
 
 		<h1 class="text-center">${requestScope.title}</h1>
-		<t:mainContainer containerID="index">
+		<t:row containerID="index">
 			<div class="col-md-6">
 				<div id="event-1" class="event text-right">
 					<c:set var="i" value="${0}" scope="page" />
@@ -63,9 +63,9 @@
 				</div>
 			</div>
 			<div class="col-md-4"></div>
-		</t:mainContainer>
+		</t:row>
 
-		<t:mainContainer>
+		<t:row>
 			<div class="col-md-6">
 				<div class="text-right">
 					<p>Von dir gekaufte oder reservierte Sitze sind grün umrandet.</p>
@@ -73,7 +73,7 @@
 				</div>
 			</div>
 			<div class="col-md-6"></div>
-		</t:mainContainer>
+		</t:row>
 
 		<t:footer />
 	</body>

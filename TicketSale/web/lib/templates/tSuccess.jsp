@@ -9,7 +9,7 @@
 		<t:browserUpgrade />
 		<t:nav />
 
-		<t:mainContainer containerID="success">
+		<t:row containerID="success">
 			<div class="col-md-3"></div>
 			<div class="col-md-6">
 				<div class="panel panel-success">
@@ -19,6 +19,6 @@
 				<a href="/TicketSale/Index">Weiter zur Startseite</a>
 			</div>
 			<div class="col-md-3"></div>
-		</t:mainContainer>
+		</t:row>
 	</body>
 </t:root>

@@ -7,7 +7,7 @@
 		<t:browserUpgrade />
 		<t:nav />
 
-		<t:mainContainer containerID="error">
+		<t:row containerID="error">
 			<div class="col-md-3"></div>
 			<div class="col-md-6">
 				<div class="panel panel-danger">
@@ -24,6 +24,6 @@
 				<a href="/TicketSale/Index">Weiter zur Startseite</a>
 			</div>
 			<div class="col-md-3"></div>
-		</t:mainContainer>
+		</t:row>
 	</body>
 </t:root>
