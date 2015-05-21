@@ -66,7 +66,7 @@ public class Event {
 	}
 
 	public void cancelReservations(User user) throws EventException {
-		if ((user == null) || (user.isInGroup("user.admin"))) {
+		if ((user == null) || !(user.isInGroup("user.admin"))) {
 			throw new EventException();
 		}
 
