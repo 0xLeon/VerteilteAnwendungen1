@@ -63,8 +63,6 @@
 			<div class="col-md-3"></div>
 		</t:mainContainer>
 
-		<footer>
-			<p>&copy; Stefan Hahn, 2015</p>
-		</footer>
+		<t:footer />
 	</body>
 </t:root>
