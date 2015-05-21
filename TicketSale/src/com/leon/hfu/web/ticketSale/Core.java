@@ -44,11 +44,17 @@ public final class Core {
 		}
 
 		if (request.getSession(true).isNew() || (request.getSession().getAttribute("user") == null)) {
-			if (userID > 0) {
-				// TODO: check login information
-				user = User.getUserByUserID(userID);
+			try {
+				if (userID > 0) {
+					// TODO: check login information
+					user = User.getUserByUserID(userID);
+				}
+				else {
+					user = User.DEFAULT_USER;
+				}
 			}
-			else {
+			catch (NoSuchUserException e) {
+				// TODO: show message or just assume default user?
 				user = User.DEFAULT_USER;
 			}
 
