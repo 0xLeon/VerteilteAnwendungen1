@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	$('.seat').on('click', function() {
+	$('.event > .seat').on('click', function() {
 		handleSeat($(this));
 	});
 });
