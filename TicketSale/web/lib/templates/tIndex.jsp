@@ -12,7 +12,7 @@
 		<h1 class="text-center">${requestScope.title}</h1>
 		<t:mainContainer containerID="index">
 			<div class="col-md-6">
-				<div id="event-1" class="event">
+				<div id="event-1" class="event text-right">
 					<c:set var="i" value="${0}" scope="page" />
 					<c:forEach var="seat" items="${applicationScope.event.seats}">
 						<c:choose>
