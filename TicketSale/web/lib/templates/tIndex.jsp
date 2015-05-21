@@ -49,6 +49,9 @@
 							<span class="seat seat-free"></span>&nbsp;Frei
 						</li>
 						<li class="list-group-item">
+							<span class="seat seat-marked"></span>&nbsp;Ausgewählt
+						</li>
+						<li class="list-group-item">
 							<span class="seat seat-reserved"></span>&nbsp;Reserviert
 						</li>
 						<li class="list-group-item">
