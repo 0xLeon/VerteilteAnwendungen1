@@ -67,19 +67,25 @@ public class TicketHandlerServlet extends HttpServlet {
 	}
 
 	private int[] getSeatIDs(HttpServletRequest request) throws ServletException {
-		ArrayList<String> seatIDsRaw = ServletUtil.getRequestParameter(request, "seatIDs[]");
-		int[] seatIDs = new int[seatIDsRaw.size()];
-		int i = 0;
-
 		try {
-			for (String seatID : seatIDsRaw) {
-				seatIDs[i] = Integer.parseInt(seatID, 10);
-			}
-		}
-		catch (NumberFormatException e) {
-			throw new ServletException("Invalid seat ID", e);
-		}
+			ArrayList<String> seatIDsRaw = ServletUtil.getRequestParameter(request, "seatIDs[]");
+			int[] seatIDs = new int[seatIDsRaw.size()];
+			int i = 0;
 
-		return seatIDs;
+			try {
+				for (String seatID : seatIDsRaw) {
+					seatIDs[i] = Integer.parseInt(seatID, 10);
+					i++;
+				}
+			}
+			catch (NumberFormatException e) {
+				throw new ServletException("Invalid seat ID", e);
+			}
+
+			return seatIDs;
+		}
+		catch (NullPointerException e) {
+			throw new ServletException(e);
+		}
 	}
 }
