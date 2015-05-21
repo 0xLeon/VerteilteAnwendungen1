@@ -30,6 +30,9 @@ public class TicketHandlerServlet extends HttpServlet {
 			case "reserve":
 				this.doReserve(request, response);
 				break;
+			case "cancel":
+				this.doCancel(request, response);
+				break;
 			default:
 				throw new ServletException("Invalid action.");
 		}
@@ -60,6 +63,17 @@ public class TicketHandlerServlet extends HttpServlet {
 
 		try {
 			Core.getInstance().getEvent().reserveSeats(seatIDs, Core.getInstance().getUser(request));
+		}
+		catch (EventException e) {
+			throw new ServletException(e);
+		}
+	}
+
+	private void doCancel(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+		int[] seatIDs = this.getSeatIDs(request);
+
+		try {
+			Core.getInstance().getEvent().cancelSeats(seatIDs, Core.getInstance().getUser(request));
 		}
 		catch (EventException e) {
 			throw new ServletException(e);
