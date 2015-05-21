@@ -54,7 +54,7 @@ public class User {
 		return ((User) obj).getUserID() == this.getUserID();
 	}
 
-	public static User getUserByUserID(int userID) {
+	public static User getUserByUserID(int userID) throws NoSuchUserException {
 		if (userID < 0) {
 			throw new IllegalArgumentException();
 		}

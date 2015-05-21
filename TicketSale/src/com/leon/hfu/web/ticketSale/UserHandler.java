@@ -35,7 +35,7 @@ public class UserHandler {
 		// TODO: implement
 	}
 
-	public User[] getUsersByID(int[] userIDs) {
+	public User[] getUsersByID(int[] userIDs) throws NoSuchUserException {
 		if ((userIDs == null) || (userIDs.length == 0)) {
 			throw new IllegalArgumentException();
 		}
@@ -45,7 +45,22 @@ public class UserHandler {
 
 		synchronized (this) {
 			for (int userID : userIDs) {
-				users[i] = this.userList.get(userID);
+				try {
+					users[i] = this.userList.get(userID);
+
+					if (users[i] == null) {
+						throw new NoSuchUserException("User with userID »" + Integer.toString(i) + "« dosen't exist.");
+					}
+
+					i++;
+				}
+				catch (ArrayIndexOutOfBoundsException e) {
+					throw new NoSuchUserException("User with userID »" + Integer.toString(i) + "« dosen't exist.");
+				}
+			}
+
+			if (i != users.length) {
+				throw new IllegalStateException();
 			}
 
 			return users;
