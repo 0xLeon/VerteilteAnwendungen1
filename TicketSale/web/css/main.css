@@ -47,6 +47,6 @@ body {
 	margin-bottom: -0.25em;
 }
 
-#index.container {
+body > .container {
 	margin-top: 3em;
 }
