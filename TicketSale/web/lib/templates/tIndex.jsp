@@ -63,6 +63,16 @@
 			<div class="col-md-3"></div>
 		</t:mainContainer>
 
+		<t:mainContainer>
+			<div class="col-md-6">
+				<div class="text-right">
+					<p>Von dir gekaufte oder reservierte Sitze sind grün umrandet.</p>
+					<p>Reservierungen möglich bis <fmt:formatDate value="${applicationScope.event.reservationDeadline}" pattern="dd.MM.yyyy, HH:mm" /> Uhr</p>.
+				</div>
+			</div>
+			<div class="col-md-6"></div>
+		</t:mainContainer>
+
 		<t:footer />
 	</body>
 </t:root>
