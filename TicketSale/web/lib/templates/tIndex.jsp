@@ -41,6 +41,7 @@
 
 					<button type="button" id="submitBuy" class="btn btn-primary btn-block">Kaufen</button>
 					<button type="button" id="submitReserve" class="btn btn-default btn-block">Reservieren</button>
+					<button type="button" id="submitCancel" class="btn btn-defalt btn-block">Stornieren</button>
 				</div>
 				<div class="seat-legend">
 					<ul class="list-group">
