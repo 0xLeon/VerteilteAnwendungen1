@@ -11,7 +11,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="/TicketSale/Index">Ticket Salee</a>
+			<a class="navbar-brand" href="/TicketSale/Index">Ticket Sale</a>
 		</div>
 
 		<c:choose>
