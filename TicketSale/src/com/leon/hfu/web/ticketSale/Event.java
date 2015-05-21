@@ -7,17 +7,18 @@ import java.util.Vector;
  * @author		Stefan Hahn
  */
 public class Event {
-	private Date date;
+	private Date reservationDeadline;
+	private Date finalDeadline;
 	private Vector<Seat> seats;
-	private boolean reservationPossible;
 
-	public Event(Date date, int seatCount) {
+	public Event(Date reservationDeadline, Date finalDeadline, int seatCount) {
 		if (seatCount < 1) {
 			throw new IllegalArgumentException();
 		}
 
-		// TODO: check date
-		this.date = date;
+		// TODO: check reservationDeadline
+		this.reservationDeadline = reservationDeadline;
+		this.finalDeadline = finalDeadline;
 		this.seats = new Vector<>(seatCount);
 
 		for (int i = 0; i < seatCount; i++) {
@@ -29,8 +30,28 @@ public class Event {
 		return this.seats;
 	}
 
+	public Date getReservationDeadline() {
+		return this.reservationDeadline;
+	}
+
+	public Date getFinalDeadline() {
+		return this.finalDeadline;
+	}
+
+	public boolean isReservationPossible() {
+		return (new Date()).before(this.reservationDeadline);
+	}
+
+	public boolean isPurchasePossible() {
+		return (new Date()).before(this.finalDeadline);
+	}
+
 	public void reserveSeats(int[] seatIDs, User customer) throws EventException {
 		this.checkCustomer(customer);
+
+		if (!this.isReservationPossible()) {
+			throw new EventException("Reservation deadline reached.");
+		}
 
 		synchronized (this) {
 			// TODO: transaction style, revert all if an error occurs
@@ -43,6 +64,10 @@ public class Event {
 
 	public void buySeats(int[] seatIDs, User customer) throws EventException {
 		this.checkCustomer(customer);
+
+		if (!this.isPurchasePossible()) {
+			throw new EventException("Purchase deadline reached.");
+		}
 
 		synchronized (this) {
 			// TODO: transaction style, revert all if an error occurs

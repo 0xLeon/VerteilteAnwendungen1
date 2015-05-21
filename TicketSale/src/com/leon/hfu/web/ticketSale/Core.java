@@ -4,6 +4,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 
 /**
  * Created by Stefan on 01.05.2015.
@@ -14,7 +15,9 @@ public final class Core {
 	private Event event = null;
 
 	private Core() {
-		this.event = new Event(null, 100);
+		// first date is Sat, 23 May 2015 21:59:59 GMT
+		// second date is  Sun, 24 May 2015 21:59:59 GMT
+		this.event = new Event(new Date(1432418399000L), new Date(1432504799000L), 100);
 	}
 
 	public static Core getInstance() {
