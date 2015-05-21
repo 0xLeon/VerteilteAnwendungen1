@@ -39,3 +39,5 @@ function handleSeat(seatNode) {
 		seatNode.toggleClass('seat-marked');
 	}
 }
+
+// TODO: client side date checks
