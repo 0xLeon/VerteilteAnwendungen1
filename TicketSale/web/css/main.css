@@ -15,9 +15,10 @@ body {
 .seat {
 	cursor: pointer;
 	display: inline-block;
-	font-size: 1.5em;
-	width: 1em;
-	height: 1em;
+	font-size: 0.7em;
+	text-align: center;
+	width: 2.75em;
+	height: 2.75em;
 	border: 2px solid;
 	border-radius: 5px;
 
@@ -57,11 +58,13 @@ body {
 }
 
 .seat-legend {
-	margin-top: 2em;
+	margin-top: 1.5em;
 }
 
 .seat-legend .seat {
-	margin-bottom: -0.25em;
+	width: 2em;
+	height: 2em;
+	margin-bottom: -0.5em;
 }
 
 body > .container {
