@@ -69,7 +69,8 @@
 			<div class="col-md-6">
 				<div class="text-right">
 					<p>Von dir gekaufte oder reservierte Sitze sind grün umrandet.</p>
-					<p>Reservierungen möglich bis <fmt:formatDate value="${applicationScope.event.reservationDeadline}" pattern="dd.MM.yyyy, HH:mm" /> Uhr</p>.
+					<p>Reservierungen möglich bis <fmt:formatDate value="${applicationScope.event.reservationDeadline}" pattern="dd.MM.yyyy, HH:mm" /> Uhr.</p>
+					<p>Vorverkauf möglich bis <fmt:formatDate value="${applicationScope.event.purchaseDeadline}" pattern="dd.MM.yyy, HH:mm" /> Uhr.</p>
 				</div>
 			</div>
 			<div class="col-md-6"></div>
