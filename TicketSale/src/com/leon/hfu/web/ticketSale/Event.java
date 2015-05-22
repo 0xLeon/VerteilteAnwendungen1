@@ -8,17 +8,17 @@ import java.util.Vector;
  */
 public class Event {
 	private Date reservationDeadline;
-	private Date finalDeadline;
+	private Date purchaseDeadline;
 	private Vector<Seat> seats;
 
-	public Event(Date reservationDeadline, Date finalDeadline, int seatCount) {
+	public Event(Date reservationDeadline, Date purchaseDeadline, int seatCount) {
 		if (seatCount < 1) {
 			throw new IllegalArgumentException();
 		}
 
 		// TODO: check reservationDeadline
 		this.reservationDeadline = reservationDeadline;
-		this.finalDeadline = finalDeadline;
+		this.purchaseDeadline = purchaseDeadline;
 		this.seats = new Vector<>(seatCount);
 
 		for (int i = 0; i < seatCount; i++) {
@@ -34,8 +34,8 @@ public class Event {
 		return this.reservationDeadline;
 	}
 
-	public Date getFinalDeadline() {
-		return this.finalDeadline;
+	public Date getPurchaseDeadline() {
+		return this.purchaseDeadline;
 	}
 
 	public boolean isReservationPossible() {
@@ -43,7 +43,7 @@ public class Event {
 	}
 
 	public boolean isPurchasePossible() {
-		return (new Date()).before(this.finalDeadline);
+		return (new Date()).before(this.purchaseDeadline);
 	}
 
 	public void reserveSeats(int[] seatIDs, User customer) throws EventException {
