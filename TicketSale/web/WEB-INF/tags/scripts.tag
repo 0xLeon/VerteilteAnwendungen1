@@ -1,3 +1,4 @@
+<%-- scripts.tag --%>
 <%@ tag isELIgnored="false" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <script src="./js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>

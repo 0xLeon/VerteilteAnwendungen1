@@ -1,3 +1,4 @@
+<%-- root.tag --%>
 <%@ tag isELIgnored="false" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>

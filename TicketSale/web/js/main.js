@@ -1,3 +1,5 @@
+// main.js
+
 $(document).ready(function() {
 	$('.event > .seat').on('click', function() {
 		handleSeat($(this));

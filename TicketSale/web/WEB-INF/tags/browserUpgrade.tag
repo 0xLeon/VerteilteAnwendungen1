@@ -1,3 +1,4 @@
+<%-- browserUpgrade.tag --%>
 <%@ tag isELIgnored="false" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <!--[if lt IE 8]>

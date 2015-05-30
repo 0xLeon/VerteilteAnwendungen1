@@ -1,3 +1,4 @@
+<%-- styles.tag --%>
 <%@ tag isELIgnored="false" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css" />
