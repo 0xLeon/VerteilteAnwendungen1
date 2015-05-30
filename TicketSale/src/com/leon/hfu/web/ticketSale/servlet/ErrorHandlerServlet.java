@@ -2,7 +2,6 @@ package com.leon.hfu.web.ticketSale.servlet;
 
 import com.leon.hfu.web.ticketSale.Core;
 import com.leon.hfu.web.ticketSale.util.ServletUtil;
-import com.sun.xml.internal.ws.api.pipe.ThrowableContainerPropertySet;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
