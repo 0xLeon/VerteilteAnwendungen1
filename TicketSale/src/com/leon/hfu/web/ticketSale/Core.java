@@ -2,6 +2,7 @@ package com.leon.hfu.web.ticketSale;
 
 import com.leon.hfu.web.ticketSale.exception.NoSuchUserException;
 import com.leon.hfu.web.ticketSale.exception.TicketSaleException;
+import com.leon.hfu.web.ticketSale.util.SQLUtil;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -47,16 +48,18 @@ public final class Core {
 
 	private void initDatabase()  {
 		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet result = null;
 
 		try {
 			this.dataSource = (DataSource) (new InitialContext()).lookup("java:app/jdbc/main");
 
 			connection = this.dataSource.getConnection();
-			PreparedStatement statement = connection.prepareStatement(
+			statement = connection.prepareStatement(
 				"SELECT COUNT(*) AS eventCount FROM event;"
 			);
 
-			ResultSet result = statement.executeQuery();
+			result = statement.executeQuery();
 			result.next();
 			int eventCount = result.getInt("eventCount");
 
@@ -68,10 +71,7 @@ public final class Core {
 			throw new TicketSaleException(e);
 		}
 		finally {
-			try {
-				if (connection != null) connection.close();
-			}
-			catch (SQLException e) { }
+			SQLUtil.close(result, statement, connection);
 		}
 	}
 
