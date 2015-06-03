@@ -1,11 +1,20 @@
 package com.leon.hfu.web.ticketSale;
 
 import com.leon.hfu.web.ticketSale.exception.NoSuchUserException;
+import com.leon.hfu.web.ticketSale.exception.TicketSaleException;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 
 /**
@@ -15,8 +24,10 @@ public final class Core {
 	private static Core instance = null;
 
 	private Event event = null;
+	private DataSource dataSource = null;
 
 	private Core() {
+		this.initDatabase();
 		// first date is Sat, 23 May 2015 21:59:59 GMT
 		// second date is  Sun, 24 May 2015 21:59:59 GMT
 		this.event = new Event(new Date(1432418399000L), new Date(1432504799000L), 100);
@@ -28,6 +39,40 @@ public final class Core {
 		}
 
 		return Core.instance;
+	}
+
+	public Connection getDatabaseConnection() throws SQLException {
+		return this.dataSource.getConnection();
+	}
+
+	private void initDatabase()  {
+		Connection connection = null;
+
+		try {
+			this.dataSource = (DataSource) (new InitialContext()).lookup("java:app/jdbc/main");
+
+			connection = this.dataSource.getConnection();
+			PreparedStatement statement = connection.prepareStatement(
+				"SELECT COUNT(*) AS eventCount FROM event;"
+			);
+
+			ResultSet result = statement.executeQuery();
+			result.next();
+			int eventCount = result.getInt("eventCount");
+
+			if (eventCount < 1) {
+				throw new SQLException("Table »event« doesn't contain any data.");
+			}
+		}
+		catch (NamingException | SQLException e) {
+			throw new TicketSaleException(e);
+		}
+		finally {
+			try {
+				if (connection != null) connection.close();
+			}
+			catch (SQLException e) { }
+		}
 	}
 
 	public void initSession(HttpServletRequest request, HttpServletResponse response) {
