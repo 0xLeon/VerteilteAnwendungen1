@@ -1,4 +1,4 @@
-package com.leon.hfu.web.ticketSale;
+package com.leon.hfu.web.ticketSale.exception;
 
 /**
  * @author		Stefan Hahn

@@ -1,5 +1,7 @@
 package com.leon.hfu.web.ticketSale;
 
+import com.leon.hfu.web.ticketSale.exception.EventException;
+
 import java.util.Date;
 import java.util.Vector;
 

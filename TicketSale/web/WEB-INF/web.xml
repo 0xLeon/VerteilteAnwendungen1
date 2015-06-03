@@ -7,7 +7,7 @@
 		<welcome-file>Index</welcome-file>
 	</welcome-file-list>
 	<error-page>
-		<exception-type>com.leon.hfu.web.ticketSale.EventException</exception-type>
+		<exception-type>com.leon.hfu.web.ticketSale.exception.EventException</exception-type>
 		<location>/Error</location>
 	</error-page>
 	<error-page>

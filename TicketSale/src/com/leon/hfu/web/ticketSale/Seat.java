@@ -1,5 +1,7 @@
 package com.leon.hfu.web.ticketSale;
 
+import com.leon.hfu.web.ticketSale.exception.EventException;
+
 /**
  * @author		Stefan Hahn
  */

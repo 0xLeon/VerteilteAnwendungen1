@@ -1,7 +1,7 @@
 package com.leon.hfu.web.ticketSale.servlet;
 
 import com.leon.hfu.web.ticketSale.Core;
-import com.leon.hfu.web.ticketSale.EventException;
+import com.leon.hfu.web.ticketSale.exception.EventException;
 import com.leon.hfu.web.ticketSale.util.ServletUtil;
 
 import javax.servlet.ServletException;
