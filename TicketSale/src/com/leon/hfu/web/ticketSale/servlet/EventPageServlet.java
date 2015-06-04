@@ -13,8 +13,8 @@ import java.io.IOException;
 /**
  * @author		Stefan Hahn
  */
-@WebServlet(name = "IndexPageServlet", urlPatterns = { "/Index" })
-public class IndexPageServlet extends HttpServlet {
+@WebServlet(name = "EventPageServlet", urlPatterns = { "/Event" })
+public class EventPageServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		throw new ServletException("Method not allowed.");
@@ -29,7 +29,7 @@ public class IndexPageServlet extends HttpServlet {
 		request.setAttribute("user", Core.getInstance().getUser(request));
 
 		synchronized (Core.getInstance()) {
-			ServletUtil.getRequestDispatcher("/lib/templates/tIndex.jsp", this.getServletContext()).forward(request, response);
+			ServletUtil.getRequestDispatcher("/lib/templates/tEvent.jsp", this.getServletContext()).forward(request, response);
 		}
 	}
 }

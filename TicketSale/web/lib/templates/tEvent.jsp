@@ -1,4 +1,4 @@
-<%-- tIndex.jsp --%>
+<%-- tEvent.jsp --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -10,7 +10,7 @@
 		<t:nav />
 
 		<h1 class="text-center">${requestScope.title}</h1>
-		<t:row containerID="index">
+		<t:row containerID="event">
 			<div class="col-md-6">
 				<div id="event-1" class="event text-right">
 					<c:set var="i" value="${0}" scope="page" />
