@@ -9,20 +9,34 @@ import java.util.Vector;
  * @author		Stefan Hahn
  */
 public class Event {
+	private int eventID;
+	private String eventName;
+	private String description;
 	private Date reservationDeadline;
 	private Date purchaseDeadline;
 	private Vector<Seat> seats;
 
-	public Event(Date reservationDeadline, Date purchaseDeadline, int seatCount) {
-		if (seatCount < 1) {
-			throw new IllegalArgumentException();
-		}
 
+	public Event(int eventID, String eventName, String description, Date reservationDeadline, Date purchaseDeadline) {
+		this.eventID = eventID;
+		this.eventName = eventName;
+		this.description = description;
 		// TODO: check reservationDeadline
 		this.reservationDeadline = reservationDeadline;
 		this.purchaseDeadline = purchaseDeadline;
 		this.seats = new Vector<>(seatCount);
+	}
 
+	public int getEventID() {
+		return this.eventID;
+	}
+
+	public String getEventName() {
+		return this.eventName;
+	}
+
+	public String getDescription() {
+		return this.description;
 	}
 
 	public Vector<Seat> getSeats() {
