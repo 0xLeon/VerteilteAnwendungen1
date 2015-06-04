@@ -99,7 +99,7 @@ public class Seat {
 		}
 
 		this.status = SeatStatus.FREE;
-		this.customer = null;
+		this.customer = User.DEFAULT_USER;
 
 		this.updateData();
 	}
