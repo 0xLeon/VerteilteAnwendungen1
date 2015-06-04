@@ -12,9 +12,15 @@ public class User {
 	private int userID;
 	private String username;
 	private String passwordHash;
-	private String[] groups;
+	private String[] groups = null;
 
 	public User(int userID, String username, String passwordHash, String[] groups) {
+		this(userID, username, passwordHash);
+
+		this.groups = groups;
+	}
+
+	public User(int userID, String username, String passwordHash) {
 		if (userID < 0) {
 			throw new IllegalArgumentException();
 		}
@@ -26,7 +32,6 @@ public class User {
 		this.userID = userID;
 		this.username = username;
 		this.passwordHash = passwordHash;
-		this.groups = groups;
 	}
 
 	public int getUserID() {
@@ -38,6 +43,8 @@ public class User {
 	}
 
 	public boolean isInGroup(String searchedGroup) {
+		this.lazyLoadGroups();
+
 		for (String group: this.groups) {
 			if (group.equals(searchedGroup)) {
 				return true;
@@ -45,6 +52,16 @@ public class User {
 		}
 
 		return false;
+	}
+
+	public void lazyLoadGroups(boolean forceReload) {
+		if ((this.groups == null) || forceReload) {
+			this.groups = UserHandler.getInstance().getGroupsForUser(this);
+		}
+	}
+
+	public void lazyLoadGroups() {
+		this.lazyLoadGroups(false);
 	}
 
 	@Override
