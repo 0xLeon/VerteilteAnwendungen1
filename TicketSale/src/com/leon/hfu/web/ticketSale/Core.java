@@ -4,7 +4,6 @@ import com.leon.hfu.web.ticketSale.exception.NoSuchUserException;
 import com.leon.hfu.web.ticketSale.exception.TicketSaleException;
 import com.leon.hfu.web.ticketSale.util.SQLUtil;
 
-import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
