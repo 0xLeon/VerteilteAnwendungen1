@@ -25,4 +25,14 @@ public class SQLUtil {
 		}
 		catch (SQLException e) { }
 	}
+
+	public static String getInPlaceholders(int length) {
+		StringBuilder placeholders = new StringBuilder();
+
+		for (int i = 0; i < length; i++) {
+			placeholders.append("?, ");
+		}
+
+		return placeholders.toString().substring(0, placeholders.toString().length() - 2);
+	}
 }
