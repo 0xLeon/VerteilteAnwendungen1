@@ -27,7 +27,7 @@ function handleSeat(seatNode) {
 		var seatID = parseInt(seatNode.data('id'), 10);
 
 		if (isMarked) {
-			$('#ticketForm #seat-form-input-' + seatID.toString(10)).remove();
+			$('#ticketForm').find('#seat-form-input-' + seatID.toString(10)).remove();
 		}
 		else {
 			var inputElement = $('<input type="hidden" name="seatIDs[]" />');
