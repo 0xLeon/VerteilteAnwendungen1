@@ -23,9 +23,6 @@ public class Event {
 		this.purchaseDeadline = purchaseDeadline;
 		this.seats = new Vector<>(seatCount);
 
-		for (int i = 0; i < seatCount; i++) {
-			this.seats.add(new Seat(i, SeatStatus.FREE, null));
-		}
 	}
 
 	public Vector<Seat> getSeats() {
