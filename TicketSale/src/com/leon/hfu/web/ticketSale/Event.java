@@ -156,8 +156,8 @@ public class Event {
 	}
 
 	private void checkSeatID(int seatID) throws EventException {
-		if ((seatID < 0) || (seatID >= this.seats.size())) {
-			throw new EventException("Invalid seatID.");
+		if (this.getSeats().get(seatID) == null) {
+			throw new EventException("Given seatID »" + seatID + "« is invalid.");
 		}
 	}
 }
