@@ -30,6 +30,13 @@ public class EventPageServlet extends HttpServlet {
 
 		this.event = ServletUtil.getEventFromRequest(request);
 
+		try {
+			this.event.lazyLoadSeats();
+		}
+		catch (EventException e) {
+			throw new ServletException(e);
+		}
+
 		request.setAttribute("title", "Ticket Sale");
 		request.setAttribute("description", "");
 		request.setAttribute("user", Core.getInstance().getUser(request));

@@ -30,6 +30,7 @@ public class CancelReservationsServlet extends HttpServlet {
 		this.event = ServletUtil.getEventFromRequest(request);
 
 		try {
+			this.event.lazyLoadSeats();
 			this.event.cancelReservations(Core.getInstance().getUser(request));
 		}
 		catch (EventException e) {
