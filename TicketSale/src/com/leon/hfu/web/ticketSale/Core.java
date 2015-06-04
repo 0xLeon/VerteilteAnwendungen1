@@ -92,7 +92,7 @@ public final class Core {
 			try {
 				if (userID > 0) {
 					// TODO: check login information
-					user = User.getUserByUserID(userID);
+					user = UserHandler.getInstance().getUserByID(userID);
 				}
 				else {
 					user = User.DEFAULT_USER;
@@ -105,7 +105,7 @@ public final class Core {
 
 			// TODO: remove, hard coded user for test purpose
 			try {
-				user = User.getUserByUserID(1); // user is Admin user Leon
+				user = UserHandler.getInstance().getUserByID(1); // user is Admin user Leon
 			}
 			catch (NoSuchUserException e) { }
 

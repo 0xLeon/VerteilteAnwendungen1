@@ -33,6 +33,44 @@ public class UserHandler {
 		// TODO: implement
 	}
 
+	public User getUserByID(int userID) throws NoSuchUserException {
+		if (userID < 0) {
+			throw new IllegalArgumentException();
+		}
+
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet result = null;
+
+		try {
+			connection = Core.getInstance().getDatabaseConnection();
+			statement = connection.prepareStatement(
+				"SELECT " +
+				"	userID, " +
+				"	username, " +
+				"	passwordHash " +
+				"FROM " +
+				"	user " +
+				"WHERE " +
+				"	userID = ?;"
+			);
+
+			statement.setInt(1, userID);
+
+			result = statement.executeQuery();
+
+			result.next();
+
+			return (new User(result.getInt("userID"), result.getString("username"), result.getString("passwordHash")));
+		}
+		catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		finally {
+			SQLUtil.close(result, statement, connection);
+		}
+	}
+
 	public User[] getUsersByID(int[] userIDs) throws NoSuchUserException {
 		if ((userIDs == null) || (userIDs.length == 0)) {
 			throw new IllegalArgumentException();

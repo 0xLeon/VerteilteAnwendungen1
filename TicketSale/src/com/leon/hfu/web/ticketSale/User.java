@@ -55,20 +55,4 @@ public class User {
 
 		return ((User) obj).getUserID() == this.getUserID();
 	}
-
-	public static User getUserByUserID(int userID) throws NoSuchUserException {
-		if (userID < 0) {
-			throw new IllegalArgumentException();
-		}
-
-		return UserHandler.getInstance().getUsersByID(new int[] {userID})[0];
-	}
-
-	public static User getUserByUsername(String username) throws NoSuchUserException {
-		if ((username == null) || (username.length() == 0)) {
-			throw new IllegalArgumentException();
-		}
-
-		return UserHandler.getInstance().getUsersByName(new String[] {username})[0];
-	}
 }
