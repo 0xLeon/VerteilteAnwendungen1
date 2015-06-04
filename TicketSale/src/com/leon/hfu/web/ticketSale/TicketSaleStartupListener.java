@@ -12,7 +12,6 @@ public class TicketSaleStartupListener implements ServletContextListener {
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
 		sce.getServletContext().setAttribute("core", Core.getInstance());
-		sce.getServletContext().setAttribute("event", Core.getInstance().getEvent());
 	}
 
 	@Override

@@ -14,7 +14,8 @@
 			<div class="col-md-6">
 				<div id="event-1" class="event text-right">
 					<c:set var="i" value="${0}" scope="page" />
-					<c:forEach var="seat" items="${applicationScope.event.seats}">
+					<c:forEach var="entry" items="${requestScope.event.seats.entrySet()}">
+						<c:set var="seat" value="${entry.getValue()}" scope="page" />
 						<c:choose>
 							<c:when test="${seat.isFree()}">
 								<span id="seat-${seat.seatID}" class="seat seat-free" data-id="${seat.seatID}">${seat.seatID}</span>
@@ -37,6 +38,7 @@
 				<div class="action-buttons">
 					<form id="ticketForm" method="post" action="/TicketSale/HandleTicket">
 						<input type="hidden" id="ticketFormAction" name="ticketFormAction" value="buy" />
+						<input type="hidden" id="eventID" name="eventID" value="${requestScope.event.eventID}" />
 
 						<!--<input type="hidden" id="seat-form-input-0" name="seatIDs[]" value="0" />-->
 					</form>
@@ -69,8 +71,8 @@
 			<div class="col-md-6">
 				<div class="text-right">
 					<p>Von dir gekaufte oder reservierte Sitze sind grün umrandet.</p>
-					<p>Reservierungen möglich bis <fmt:formatDate value="${applicationScope.event.reservationDeadline}" pattern="dd.MM.yyyy, HH:mm" /> Uhr.</p>
-					<p>Vorverkauf möglich bis <fmt:formatDate value="${applicationScope.event.purchaseDeadline}" pattern="dd.MM.yyy, HH:mm" /> Uhr.</p>
+					<p>Reservierungen möglich bis <fmt:formatDate value="${requestScope.event.reservationDeadline}" pattern="dd.MM.yyyy, HH:mm" /> Uhr.</p>
+					<p>Vorverkauf möglich bis <fmt:formatDate value="${requestScope.event.purchaseDeadline}" pattern="dd.MM.yyy, HH:mm" /> Uhr.</p>
 				</div>
 			</div>
 			<div class="col-md-6"></div>
