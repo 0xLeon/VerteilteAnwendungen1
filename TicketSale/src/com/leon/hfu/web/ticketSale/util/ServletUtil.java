@@ -92,7 +92,7 @@ public class ServletUtil {
 
 		for (int i = 0, l = string.length(); i < l; i++) {
 			currentChar = string.charAt(i);
-			entity = ServletUtil.getEntityForChar(currentChar, false);
+			entity = ServletUtil.getEntityForChar(currentChar, attributeContext);
 
 			if (buffer == null) {
 				if (entity != null) {
