@@ -68,36 +68,4 @@ public class UserHandler {
 			return users;
 		}
 	}
-
-	public User[] getUsersByName(String[] usernames) throws NoSuchUserException {
-		if ((usernames == null) || (usernames.length == 0)) {
-			throw new IllegalArgumentException();
-		}
-
-		User[] users = new User[usernames.length];
-		int[] i = {0};
-
-		synchronized (this) {
-			for (String username : usernames) {
-				int c = i[0];
-
-				this.userList.forEach(user -> {
-					if (user.getUsername().equals(username)) {
-						users[i[0]] = user;
-						i[0]++;
-					}
-				});
-
-				if (c == i[0]) {
-					throw new NoSuchUserException("User »" + username + "« not found.");
-				}
-			}
-
-			if (i[0] != users.length) {
-				throw new IllegalStateException();
-			}
-
-			return users;
-		}
-	}
 }
