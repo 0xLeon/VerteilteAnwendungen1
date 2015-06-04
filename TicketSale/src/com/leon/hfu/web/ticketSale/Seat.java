@@ -8,12 +8,18 @@ import com.leon.hfu.web.ticketSale.exception.EventException;
 public class Seat {
 	private int seatID;
 
+	private int seatNumber;
+
+	private int eventID;
+
 	private SeatStatus status;
 
 	private User customer = User.DEFAULT_USER;
 
-	public Seat(int seatID, SeatStatus status, User customer) {
+	public Seat(int seatID, int seatNumber, int eventID, SeatStatus status, User customer) {
 		this.seatID = seatID;
+		this.seatNumber = seatNumber;
+		this.eventID = eventID;
 		this.status = status;
 
 		if ((this.status == SeatStatus.RESERVED) || this.status == SeatStatus.SOLD) {
@@ -27,6 +33,14 @@ public class Seat {
 
 	public int getSeatID() {
 		return this.seatID;
+	}
+
+	public int getSeatNumber() {
+		return this.seatNumber;
+	}
+
+	public int getEventID() {
+		return this.eventID;
 	}
 
 	public SeatStatus getStatus() {
