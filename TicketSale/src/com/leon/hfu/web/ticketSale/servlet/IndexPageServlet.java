@@ -37,8 +37,6 @@ public class IndexPageServlet extends HttpServlet {
 			throw new ServletException(e);
 		}
 
-		System.out.println("Events Count: " + events.size());
-
 		request.setAttribute("title", "Ticket Sale");
 		request.setAttribute("description", "");
 		request.setAttribute("user", Core.getInstance().getUser(request));
