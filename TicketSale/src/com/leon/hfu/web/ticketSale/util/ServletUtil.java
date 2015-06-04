@@ -1,5 +1,9 @@
 package com.leon.hfu.web.ticketSale.util;
 
+import com.leon.hfu.web.ticketSale.Event;
+import com.leon.hfu.web.ticketSale.EventAdapter;
+import com.leon.hfu.web.ticketSale.exception.EventException;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -45,6 +49,17 @@ public class ServletUtil {
 		}
 
 		return (T) value;
+	}
+
+	public static Event getEventFromRequest(HttpServletRequest request) throws ServletException {
+		try {
+			int eventID = Integer.parseInt(ServletUtil.getSingleRequestParameter(request, "eventID"));
+
+			 return EventAdapter.getEventByID(eventID);
+		}
+		catch (NumberFormatException | EventException e) {
+			throw new ServletException(e);
+		}
 	}
 
 	public synchronized static RequestDispatcher getRequestDispatcher(String path, ServletContext servletContext) {
