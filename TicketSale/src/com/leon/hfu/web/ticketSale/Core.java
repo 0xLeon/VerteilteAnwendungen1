@@ -55,12 +55,6 @@ public final class Core {
 			);
 
 			result = statement.executeQuery();
-			result.next();
-			int eventCount = result.getInt("eventCount");
-
-			if (eventCount < 1) {
-				throw new SQLException("Table »event« doesn't contain any data.");
-			}
 		}
 		catch (NamingException | SQLException e) {
 			throw new TicketSaleException(e);
