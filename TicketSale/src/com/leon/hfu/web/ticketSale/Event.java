@@ -3,7 +3,7 @@ package com.leon.hfu.web.ticketSale;
 import com.leon.hfu.web.ticketSale.exception.EventException;
 
 import java.util.Date;
-import java.util.Vector;
+import java.util.HashMap;
 
 /**
  * @author		Stefan Hahn
@@ -14,8 +14,7 @@ public class Event {
 	private String description;
 	private Date reservationDeadline;
 	private Date purchaseDeadline;
-	private Vector<Seat> seats;
-
+	private HashMap<Integer, Seat> seats = null;
 
 	public Event(int eventID, String eventName, String description, Date reservationDeadline, Date purchaseDeadline) {
 		this.eventID = eventID;
@@ -24,7 +23,6 @@ public class Event {
 		// TODO: check reservationDeadline
 		this.reservationDeadline = reservationDeadline;
 		this.purchaseDeadline = purchaseDeadline;
-		this.seats = new Vector<>(seatCount);
 	}
 
 	public int getEventID() {
@@ -39,7 +37,9 @@ public class Event {
 		return this.description;
 	}
 
-	public Vector<Seat> getSeats() {
+	public HashMap<Integer, Seat> getSeats() throws EventException {
+		this.lazyLoadSeats();
+
 		return this.seats;
 	}
 
@@ -67,6 +67,8 @@ public class Event {
 		}
 
 		synchronized (this) {
+			this.lazyLoadSeats(true);
+
 			// TODO: transaction style, revert all if an error occurs
 			for (int seatID : seatIDs) {
 				this.checkSeatID(seatID);
@@ -83,6 +85,8 @@ public class Event {
 		}
 
 		synchronized (this) {
+			this.lazyLoadSeats(true);
+
 			// TODO: transaction style, revert all if an error occurs
 			for (int seatID : seatIDs) {
 				this.checkSeatID(seatID);
@@ -95,6 +99,8 @@ public class Event {
 		this.checkCustomer(customer);
 
 		synchronized (this) {
+			this.lazyLoadSeats(true);
+
 			// TODO: transaction style, revert all if an error occurs
 			for (int seatID : seatIDs) {
 				this.checkSeatID(seatID);
@@ -109,12 +115,38 @@ public class Event {
 		}
 
 		synchronized (this) {
-			this.seats.forEach(seat -> {
-				if (seat.getStatus() == SeatStatus.RESERVED) {
-					seat.cancelReservation();
+			try {
+				this.lazyLoadSeats(true);
+				this.seats.entrySet().forEach(entry -> {
+					if (entry.getValue().getStatus() == SeatStatus.RESERVED) {
+						try {
+							entry.getValue().cancelReservation();
+						}
+						catch (EventException e) {
+							throw new RuntimeException(e);
+						}
+					}
+				});
+			}
+			catch (RuntimeException e) {
+				if ((e.getCause() != null) && (e.getCause() instanceof EventException)) {
+					throw (EventException) e.getCause();
 				}
-			});
+				else {
+					throw e;
+				}
+			}
 		}
+	}
+
+	public void lazyLoadSeats(boolean forceReload) throws EventException {
+		if ((this.seats == null) || forceReload) {
+			this.seats = SeatAdapter.getSeatsForEvent(this);
+		}
+	}
+
+	public void lazyLoadSeats() throws EventException {
+		this.lazyLoadSeats(false);
 	}
 
 	private void checkCustomer(User customer) throws EventException {
