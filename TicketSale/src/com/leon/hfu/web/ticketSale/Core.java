@@ -16,7 +16,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
 
 /**
  * Created by Stefan on 01.05.2015.
@@ -24,14 +23,10 @@ import java.util.Date;
 public final class Core {
 	private static Core instance = null;
 
-	private Event event = null;
 	private DataSource dataSource = null;
 
 	private Core() {
 		this.initDatabase();
-		// first date is Sat, 23 May 2015 21:59:59 GMT
-		// second date is  Sun, 24 May 2015 21:59:59 GMT
-		this.event = new Event(new Date(1432418399000L), new Date(1432504799000L), 100);
 	}
 
 	public static Core getInstance() {
@@ -127,9 +122,5 @@ public final class Core {
 		}
 
 		return ((User) rawUserObject);
-	}
-
-	public Event getEvent() {
-		return this.event;
 	}
 }
