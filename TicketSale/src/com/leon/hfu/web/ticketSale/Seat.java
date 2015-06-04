@@ -70,6 +70,8 @@ public class Seat {
 
 		this.status = SeatStatus.RESERVED;
 		this.customer = customer;
+
+		this.updateData();
 	}
 
 	public void buy(User customer) throws EventException {
@@ -83,6 +85,8 @@ public class Seat {
 
 		this.status = SeatStatus.SOLD;
 		this.customer = customer;
+
+		this.updateData();
 	}
 
 	public void cancel(User customer) throws EventException {
@@ -96,13 +100,21 @@ public class Seat {
 
 		this.status = SeatStatus.FREE;
 		this.customer = null;
+
+		this.updateData();
 	}
 
-	public void cancelReservation() {
+	public void cancelReservation() throws EventException {
 		if (this.status == SeatStatus.RESERVED) {
 			this.status = SeatStatus.FREE;
 			this.customer = User.DEFAULT_USER;
+
+			this.updateData();
 		}
+	}
+
+	private void updateData() throws EventException {
+		SeatAdapter.saveSeat(this);
 	}
 
 	@Override
