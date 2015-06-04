@@ -9,7 +9,7 @@
 		<t:browserUpgrade />
 		<t:nav />
 
-		<h1 class="text-center">${requestScope.title}</h1>
+		<h1 class="text-center">${requestScope.event.eventName}</h1>
 		<t:row containerID="event">
 			<div class="col-md-6">
 				<div id="event-1" class="event text-right">
