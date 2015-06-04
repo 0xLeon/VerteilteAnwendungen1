@@ -1,6 +1,8 @@
 package com.leon.hfu.web.ticketSale.servlet;
 
 import com.leon.hfu.web.ticketSale.Core;
+import com.leon.hfu.web.ticketSale.Event;
+import com.leon.hfu.web.ticketSale.EventAdapter;
 import com.leon.hfu.web.ticketSale.exception.EventException;
 import com.leon.hfu.web.ticketSale.util.ServletUtil;
 
@@ -17,9 +19,13 @@ import java.util.ArrayList;
  */
 @WebServlet(name = "TicketHandlerServlet", urlPatterns = { "/HandleTicket" })
 public class TicketHandlerServlet extends HttpServlet {
+	private Event event;
+
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Core.getInstance().initSession(request, response);
+
+		this.event = ServletUtil.getEventFromRequest(request);
 
 		String action = ServletUtil.getSingleRequestParameter(request, "ticketFormAction").toLowerCase();
 
@@ -51,7 +57,7 @@ public class TicketHandlerServlet extends HttpServlet {
 		int[] seatIDs = this.getSeatIDs(request);
 
 		try {
-			Core.getInstance().getEvent().buySeats(seatIDs, Core.getInstance().getUser(request));
+			this.event.buySeats(seatIDs, Core.getInstance().getUser(request));
 		}
 		catch (EventException e) {
 			throw new ServletException(e);
@@ -62,7 +68,7 @@ public class TicketHandlerServlet extends HttpServlet {
 		int[] seatIDs = this.getSeatIDs(request);
 
 		try {
-			Core.getInstance().getEvent().reserveSeats(seatIDs, Core.getInstance().getUser(request));
+			this.event.reserveSeats(seatIDs, Core.getInstance().getUser(request));
 		}
 		catch (EventException e) {
 			throw new ServletException(e);
@@ -73,7 +79,7 @@ public class TicketHandlerServlet extends HttpServlet {
 		int[] seatIDs = this.getSeatIDs(request);
 
 		try {
-			Core.getInstance().getEvent().cancelSeats(seatIDs, Core.getInstance().getUser(request));
+			this.event.cancelSeats(seatIDs, Core.getInstance().getUser(request));
 		}
 		catch (EventException e) {
 			throw new ServletException(e);
