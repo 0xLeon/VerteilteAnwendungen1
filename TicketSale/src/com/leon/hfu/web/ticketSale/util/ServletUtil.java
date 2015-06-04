@@ -70,5 +70,86 @@ public class ServletUtil {
 		return ServletUtil.requestDispatchers.get(path);
 	}
 
+	/**
+	 * This will take the three pre-defined entities in XML 1.0 (used
+	 * specifically in XML elements) and convert their character representation
+	 * to the appropriate entity reference, suitable for XML element content.
+	 *
+	 * https://code.google.com/p/jatl/source/browse/src/main/java/com/googlecode/jatl/MarkupUtils.java
+	 *
+	 * @param	string			<code>String</code> input to escape.
+	 * @param	attributeContext	If true, escaping is set to attribute context escaping witespace characters as well.
+	 * @return				<code>String</code> with escaped content.
+	 */
+	public static String escapeXML(String string, boolean attributeContext) {
+		if (string == null) {
+			return null;
+		}
+
+		StringBuffer buffer = null;
+		char currentChar;
+		String entity;
+
+		for (int i = 0, l = string.length(); i < l; i++) {
+			currentChar = string.charAt(i);
+			entity = ServletUtil.getEntityForChar(currentChar, false);
+
+			if (buffer == null) {
+				if (entity != null) {
+					// An entity occurred, so we'll have to use StringBuffer
+					// (allocate room for it plus a few more entities).
+					buffer = new StringBuffer(string.length() + 20);
+
+					// Copy previous skipped characters and fall through
+					// to pickup current character
+					buffer.append(string.substring(0, i));
+					buffer.append(entity);
+				}
+			}
+			else {
+				if (entity == null) {
+					buffer.append(currentChar);
+				}
+				else {
+					buffer.append(entity);
+				}
+			}
+		}
+
+		// If there were any entities, return the escaped characters
+		// that we put in the StringBuffer. Otherwise, just return
+		// the unmodified input string.
+		return ((buffer == null) ? string : buffer.toString());
+	}
+
+	private static String getEntityForChar(char c, boolean attributeContext) {
+		switch (c) {
+			case '<':
+				return "&lt;";
+			case '>':
+				return "&gt;";
+			case '&':
+				return "&amp;";
+			case '"':
+				return "&quot;";
+		}
+
+		if (attributeContext) {
+			switch (c) {
+				case '\r':
+					return "&#xD;";
+				case '\n' :
+					return "&#xA;";
+				case '\t':
+					return "&#x9;";
+				default:
+					return null;
+			}
+		}
+		else {
+			return null;
+		}
+	}
+
 	private ServletUtil() { }
 }
