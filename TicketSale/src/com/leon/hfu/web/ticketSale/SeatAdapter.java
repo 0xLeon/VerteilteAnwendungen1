@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.HashMap;
 
 /**
@@ -112,6 +113,10 @@ public class SeatAdapter {
 		Connection connection = null;
 		PreparedStatement statement = null;
 
+		if ((seat.getCustomer().getUserID() == 0) && (seat.getStatus().ordinal() > SeatStatus.FREE.ordinal())) {
+			throw new EventException("User can't be null if seat is reserved or purchased.");
+		}
+
 		try {
 			connection = Core.getInstance().getDatabaseConnection();
 			statement = connection.prepareStatement(
@@ -124,8 +129,14 @@ public class SeatAdapter {
 			);
 
 			statement.setInt(1, seat.getStatus().ordinal());
-			statement.setInt(2, seat.getCustomer().getUserID());
 			statement.setInt(3, seat.getSeatID());
+
+			if (seat.getCustomer().getUserID() > 0) {
+				statement.setInt(2, seat.getCustomer().getUserID());
+			}
+			else {
+				statement.setNull(2, Types.NULL);
+			}
 
 			statement.executeUpdate();
 		}
