@@ -68,3 +68,8 @@ body {
 body > .container {
 	margin-top: 3em;
 }
+
+textarea {
+	overflow: auto;
+	resize: vertical;
+}
