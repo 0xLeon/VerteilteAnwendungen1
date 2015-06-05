@@ -4,7 +4,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <t:root>
-	<t:header />
+	<t:header>
+		<script src="./js/event.js"></script>
+	</t:header>
 	<body>
 		<t:browserUpgrade />
 		<t:nav />

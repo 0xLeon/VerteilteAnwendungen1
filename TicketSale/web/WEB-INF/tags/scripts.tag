@@ -8,7 +8,6 @@
 <script src="./js/vendor/bootstrap-datepicker.min.js"></script>
 <script src="./js/vendor/locales/bootstrap-datepicker.en-GB.min.js"></script>
 <script src="./js/vendor/locales/bootstrap-datepicker.de.min.js"></script>
-<script src="./js/main.js"></script>
 <script type="text/javascript">
 	// <![CDATA[
 
