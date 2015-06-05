@@ -2,7 +2,6 @@ package com.leon.hfu.web.ticketSale.servlet;
 
 import com.leon.hfu.web.ticketSale.Core;
 import com.leon.hfu.web.ticketSale.Event;
-import com.leon.hfu.web.ticketSale.EventAdapter;
 import com.leon.hfu.web.ticketSale.exception.EventException;
 import com.leon.hfu.web.ticketSale.exception.URIParameterException;
 import com.leon.hfu.web.ticketSale.util.ServletUtil;
