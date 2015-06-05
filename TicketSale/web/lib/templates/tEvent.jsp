@@ -23,10 +23,10 @@
 								<span id="seat-${seat.seatID}" class="seat seat-free" data-id="${seat.seatID}">${seat.seatNumber}</span>
 							</c:when>
 							<c:when test="${seat.isReserved()}">
-								<span id="seat-${seat.seatID}" class="seat seat-reserved${(seat.customer.userID == requestScope.user.userID) ? ' seat-own' : ''}" data-id="${seat.seatID}">${seat.seatNumber}</span>
+								<span id="seat-${seat.seatID}" class="seat seat-reserved${(seat.customer.userID == sessionScope.user.userID) ? ' seat-own' : ''}" data-id="${seat.seatID}">${seat.seatNumber}</span>
 							</c:when>
 							<c:when test="${seat.isSold()}">
-								<span id="seat-${seat.seatID}" class="seat seat-sold${(seat.customer.userID == requestScope.user.userID) ? ' seat-own' : ''}" data-id="${seat.seatID}">${seat.seatNumber}</span>
+								<span id="seat-${seat.seatID}" class="seat seat-sold${(seat.customer.userID == sessionScope.user.userID) ? ' seat-own' : ''}" data-id="${seat.seatID}">${seat.seatNumber}</span>
 							</c:when>
 						</c:choose>
 
