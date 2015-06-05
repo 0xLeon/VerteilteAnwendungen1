@@ -4,6 +4,7 @@ import com.leon.hfu.web.ticketSale.Core;
 import com.leon.hfu.web.ticketSale.Event;
 import com.leon.hfu.web.ticketSale.EventAdapter;
 import com.leon.hfu.web.ticketSale.exception.EventException;
+import com.leon.hfu.web.ticketSale.exception.URIParameterException;
 import com.leon.hfu.web.ticketSale.util.ServletUtil;
 
 import javax.servlet.ServletException;
@@ -27,7 +28,14 @@ public class TicketHandlerServlet extends HttpServlet {
 
 		this.event = ServletUtil.getEventFromRequest(request);
 
-		String action = ServletUtil.getSingleRequestParameter(request, "ticketFormAction").toLowerCase();
+		String action;
+		try {
+			action = ServletUtil.getSingleRequestParameter(request, "ticketFormAction").toLowerCase();
+		}
+		catch (URIParameterException e) {
+			// TODO: redirect to event page with error message
+			throw new ServletException(e);
+		}
 
 		switch (action) {
 			case "buy":
@@ -105,6 +113,10 @@ public class TicketHandlerServlet extends HttpServlet {
 			return seatIDs;
 		}
 		catch (NullPointerException e) {
+			throw new ServletException(e);
+		}
+		catch (URIParameterException e) {
+			// TODO: redirect to event page with error message
 			throw new ServletException(e);
 		}
 	}

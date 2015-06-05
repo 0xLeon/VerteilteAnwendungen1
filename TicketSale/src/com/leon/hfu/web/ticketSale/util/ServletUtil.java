@@ -3,6 +3,7 @@ package com.leon.hfu.web.ticketSale.util;
 import com.leon.hfu.web.ticketSale.Event;
 import com.leon.hfu.web.ticketSale.EventAdapter;
 import com.leon.hfu.web.ticketSale.exception.EventException;
+import com.leon.hfu.web.ticketSale.exception.URIParameterException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -18,12 +19,12 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ServletUtil {
 	private static ConcurrentHashMap<String, RequestDispatcher> requestDispatchers = new ConcurrentHashMap<>();
 
-	public static ArrayList<String> getRequestParameter(HttpServletRequest request, String key) throws ServletException {
+	public static ArrayList<String> getRequestParameter(HttpServletRequest request, String key) throws URIParameterException {
 		String[] valuesRaw = request.getParameterValues(key);
 		ArrayList<String> values = new ArrayList<>(valuesRaw.length);
 
 		if ((valuesRaw == null) || (valuesRaw.length == 0)) {
-			throw new ServletException("Parameter »" + key + "« doesn't exist.");
+			throw new URIParameterException("Parameter »" + key + "« doesn't exist.", key);
 		}
 
 		for (String value: valuesRaw) {
@@ -37,7 +38,7 @@ public class ServletUtil {
 		return values;
 	}
 
-	public static String getSingleRequestParameter(HttpServletRequest request, String key) throws ServletException {
+	public static String getSingleRequestParameter(HttpServletRequest request, String key) throws URIParameterException {
 		return ServletUtil.getRequestParameter(request, key).get(0);
 	}
 
@@ -57,7 +58,7 @@ public class ServletUtil {
 
 			 return EventAdapter.getEventByID(eventID);
 		}
-		catch (NumberFormatException | EventException e) {
+		catch (NumberFormatException | URIParameterException | EventException e) {
 			throw new ServletException(e);
 		}
 	}
