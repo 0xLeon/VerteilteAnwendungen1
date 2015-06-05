@@ -11,7 +11,7 @@
 		<t:browserUpgrade />
 		<t:nav />
 
-		<h1 class="text-center">${requestScope.pageTitle}</h1>
+		<h1 class="text-center">${requestScope.title}</h1>
 		<t:row containerID="addEvent">
 			<div class="col-md-3"></div>
 			<div class="col-md-6">
