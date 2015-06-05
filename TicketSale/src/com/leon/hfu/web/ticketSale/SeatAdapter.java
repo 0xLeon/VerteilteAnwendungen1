@@ -32,7 +32,7 @@ public class SeatAdapter {
 
 			statement.setInt(2, eventID);
 			statement.setInt(3, SeatStatus.FREE.ordinal());
-			for (int i = 0; i < seatCount; i++) {
+			for (int i = 1, l = seatCount + 1; i < l; i++) {
 				statement.setInt(1, i);
 				statement.execute();
 			}
