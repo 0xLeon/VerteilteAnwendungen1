@@ -9,8 +9,8 @@
 		<t:nav />
 
 		<t:row containerID="error">
-			<div class="col-md-3"></div>
-			<div class="col-md-6">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
 				<div class="panel panel-danger">
 					<div class="panel-heading">Fehler</div>
 					<div class="panel-body">
@@ -24,7 +24,7 @@
 				</div>
 				<a href="/TicketSale/Index">Weiter zur Startseite</a>
 			</div>
-			<div class="col-md-3"></div>
+			<div class="col-md-2"></div>
 		</t:row>
 	</body>
 </t:root>
