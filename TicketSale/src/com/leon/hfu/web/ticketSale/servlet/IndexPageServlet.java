@@ -37,8 +37,8 @@ public class IndexPageServlet extends HttpServlet {
 			throw new ServletException(e);
 		}
 
-		request.setAttribute("title", "Ticket Sale");
-		request.setAttribute("description", "");
+		request.setAttribute("pageTitle", "Ticket Sale");
+		request.setAttribute("pageDescription", "");
 		request.setAttribute("events", events);
 
 		synchronized (Core.getInstance()) {

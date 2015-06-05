@@ -50,8 +50,8 @@ public class TicketHandlerServlet extends HttpServlet {
 				throw new ServletException("Invalid action.");
 		}
 
-		request.setAttribute("title", "Erfolgreich | Ticket Sale");
-		request.setAttribute("description", "");
+		request.setAttribute("pageTitle", "Erfolgreich | Ticket Sale");
+		request.setAttribute("pageDescription", "");
 		ServletUtil.getRequestDispatcher("/lib/templates/tSuccess.jsp", this.getServletContext()).forward(request, response);
 	}
 

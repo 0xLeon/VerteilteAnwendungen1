@@ -39,8 +39,8 @@ public class AddEventFormServlet extends HttpServlet {
 			this.getParameters(request);
 			EventAdapter.createEvent(this.eventName, this.description, this.reservationDeadline, this.purchaseDeadline, this.seatCount);
 
-			request.setAttribute("title", "Erfolgreich | Ticket Sale");
-			request.setAttribute("description", "");
+			request.setAttribute("pageTitle", "Erfolgreich | Ticket Sale");
+			request.setAttribute("pageDescription", "");
 			ServletUtil.getRequestDispatcher("/lib/templates/tSuccess.jsp", this.getServletContext()).forward(request, response);
 		}
 		catch (URIParameterException e) {
@@ -63,9 +63,9 @@ public class AddEventFormServlet extends HttpServlet {
 		// Form display
 		Core.getInstance().initSession(request, response);
 
-		request.setAttribute("title", "Event hinzufügen | Ticket Sale");
-		request.setAttribute("pageTitle", "Event hinzufügen");
-		request.setAttribute("description", "");
+		request.setAttribute("pageTitle", "Event hinzufügen | Ticket Sale");
+		request.setAttribute("pageDescription", "");
+		request.setAttribute("title", "Event hinzufügen");
 
 		ServletUtil.getRequestDispatcher("/lib/templates/tAddEvent.jsp", this.getServletContext()).forward(request, response);
 	}

@@ -37,6 +37,8 @@ public class CancelReservationsServlet extends HttpServlet {
 			throw new ServletException(e);
 		}
 
+		request.setAttribute("pageTitle", "Erfolgreich | Ticket Sale");
+		request.setAttribute("pageDescription", "");
 		ServletUtil.getRequestDispatcher("/lib/templates/tSuccess.jsp", this.getServletContext()).forward(request, response);
 	}
 

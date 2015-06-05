@@ -29,8 +29,8 @@ public class ErrorHandlerServlet extends HttpServlet {
 		exception.printStackTrace(new PrintWriter(sw));
 		stacktrace = sw.toString();
 
-		request.setAttribute("title", "Fehler");
-		request.setAttribute("description", "");
+		request.setAttribute("pageTitle", "Fehler");
+		request.setAttribute("pageDescription", "");
 		request.setAttribute("exception", exception);
 		request.setAttribute("stacktrace", stacktrace);
 

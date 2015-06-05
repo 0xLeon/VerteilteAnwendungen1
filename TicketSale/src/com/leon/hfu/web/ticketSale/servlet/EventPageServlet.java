@@ -37,8 +37,8 @@ public class EventPageServlet extends HttpServlet {
 			throw new ServletException(e);
 		}
 
-		request.setAttribute("title", "Ticket Sale");
-		request.setAttribute("description", "");
+		request.setAttribute("pageTitle", "Ticket Sale");
+		request.setAttribute("pageDescription", "");
 		request.setAttribute("event", this.event);
 
 		synchronized (Core.getInstance()) {
