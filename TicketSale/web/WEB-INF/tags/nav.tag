@@ -37,7 +37,6 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">${sessionScope.user.username} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="#">Profil</a></li>
-								<c:if test="${sessionScope.user.isInGroup('user.admin')}"><li><a href="/TicketSale/AddEvent">Event hinzufuegen</a></li></c:if>
 								<li><a href="#">Logout</a></li>
 							</ul>
 						</li>

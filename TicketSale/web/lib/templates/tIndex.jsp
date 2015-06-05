@@ -46,6 +46,11 @@
 					</c:otherwise>
 				</c:choose>
 
+				<c:if test="${sessionScope.user.isInGroup('user.admin')}">
+					<div class="well">
+						<a class="btn btn-primary btn-lg btn-block" href="/TicketSale/AddEvent">Event hinzufügen</a>
+					</div>
+				</c:if>
 			</div>
 			<div class="col-md-3"></div>
 		</t:row>
