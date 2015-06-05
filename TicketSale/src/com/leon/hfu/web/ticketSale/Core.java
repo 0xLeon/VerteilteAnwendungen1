@@ -98,7 +98,7 @@ public final class Core {
 
 			// TODO: remove, hard coded user for test purpose
 			try {
-				user = UserHandler.getInstance().getUserByID(1); // user is Admin user Leon
+				user = UserHandler.getInstance().getUserByID(1); // user is Admin
 			}
 			catch (NoSuchUserException e) { }
 
