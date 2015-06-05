@@ -25,7 +25,7 @@ public class SeatAdapter {
 		try {
 			connection = Core.getInstance().getDatabaseConnection();
 			statement = connection.prepareStatement(
-				"INSERT INTO seat" +
+				"INSERT INTO ticketsale_seat" +
 				"	(seatNumber, eventID, seatStatus)" +
 				"VALUES (?, ?, ?);"
 			);
@@ -68,13 +68,15 @@ public class SeatAdapter {
 				"	seat.seatID AS seatID, " +
 				"	seat.seatNumber AS seatNumber, " +
 				"	seat.seatStatus AS seatStatus, " +
-				"	user.userID AS userID, " +
-				"	user.username AS username, " +
-				"	user.passwordHash AS passwordHash " +
+				"	tUser.userID AS userID, " +
+				"	tUser.username AS username, " +
+				"	tUser.passwordHash AS passwordHash " +
 				"FROM " +
-				"	seat " +
+				"	ticketsale_seat seat " +
 				"LEFT JOIN " +
-				"	user ON seat.userID = user.userID " +
+				"	ticketsale_user tUser " +
+				"ON " +
+				"	seat.userID = tUser.userID " +
 				"WHERE " +
 				"	seat.eventID = ? " +
 				"ORDER BY " +
@@ -120,7 +122,7 @@ public class SeatAdapter {
 		try {
 			connection = Core.getInstance().getDatabaseConnection();
 			statement = connection.prepareStatement(
-				"UPDATE seat " +
+				"UPDATE ticketsale_seat " +
 				"SET " +
 				"	seatStatus = ?, " +
 				"	userID = ? " +

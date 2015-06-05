@@ -50,7 +50,7 @@ public class UserHandler {
 				"	username, " +
 				"	passwordHash " +
 				"FROM " +
-				"	user " +
+				"	ticketsale_user " +
 				"WHERE " +
 				"	userID = ?;"
 			);
@@ -91,7 +91,7 @@ public class UserHandler {
 				"	username, " +
 				"	passwordHash " +
 				"FROM " +
-				"	user " +
+				"	ticketsale_user " +
 				"WHERE " +
 				"	userID IN (" + SQLUtil.getInPlaceholders(userIDs.length) + ");"
 			);
@@ -132,13 +132,13 @@ public class UserHandler {
 			connection = Core.getInstance().getDatabaseConnection();
 			statement = connection.prepareStatement(
 				"SELECT " +
-				"	`group`.groupIdentifier AS groupIdentifier " +
+				"	tGroup.groupIdentifier AS groupIdentifier " +
 				"FROM " +
-				"	`group` " +
+				"	ticketsale_group tGroup " +
 				"LEFT JOIN " +
-				"	user_to_group toGroup " +
+				"	ticketsale_user_to_group toGroup " +
 				"ON " +
-				"	toGroup.groupID = `group`.groupID " +
+				"	toGroup.groupID = tGroup.groupID " +
 				"WHERE " +
 				"	toGroup.userID = ?;"
 			);

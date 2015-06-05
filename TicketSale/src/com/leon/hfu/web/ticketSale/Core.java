@@ -50,7 +50,7 @@ public final class Core {
 
 			connection = this.dataSource.getConnection();
 			statement = connection.prepareStatement(
-				"SELECT COUNT(*) AS eventCount FROM event;"
+				"SELECT COUNT(*) AS eventCount FROM ticketsale_event;"
 			);
 
 			result = statement.executeQuery();

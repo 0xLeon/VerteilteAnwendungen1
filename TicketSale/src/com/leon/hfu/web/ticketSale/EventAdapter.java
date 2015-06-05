@@ -24,7 +24,7 @@ public class EventAdapter {
 		try {
 			connection = Core.getInstance().getDatabaseConnection();
 			statement = connection.prepareStatement(
-				"INSERT INTO event " +
+				"INSERT INTO ticketsale_event " +
 				"	(eventName, description, reservationDeadline, purchaseDeadline) " +
 				"VALUES " +
 				"	(?, ?, ?, ?);",
@@ -82,7 +82,7 @@ public class EventAdapter {
 				"SELECT " +
 				"	* " +
 				"FROM " +
-				"	event " +
+				"	ticketsale_event " +
 				"WHERE " +
 				"	eventID = ?;"
 			);
@@ -131,7 +131,7 @@ public class EventAdapter {
 				"SELECT " +
 				"	* " +
 				"FROM " +
-				"	event;"
+				"	ticketsale_event;"
 			);
 
 			result = statement.executeQuery();
@@ -162,7 +162,7 @@ public class EventAdapter {
 			connection = Core.getInstance().getDatabaseConnection();
 			statement = connection.prepareStatement(
 				"DELETE FROM " +
-				"	event " +
+				"	ticketsale_event " +
 				"WHERE " +
 				"	eventID = ?;"
 			);
