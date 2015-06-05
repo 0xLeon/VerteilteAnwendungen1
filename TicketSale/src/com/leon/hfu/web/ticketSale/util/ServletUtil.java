@@ -35,6 +35,10 @@ public class ServletUtil {
 			values.add(value);
 		}
 
+		if (values.size() == 0) {
+			throw new URIParameterException("Parameter »" + key + "« doesn't exist.", key);
+		}
+
 		return values;
 	}
 
