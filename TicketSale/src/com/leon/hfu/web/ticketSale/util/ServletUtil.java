@@ -23,7 +23,7 @@ public class ServletUtil {
 		String[] valuesRaw = request.getParameterValues(key);
 		ArrayList<String> values = new ArrayList<>(valuesRaw.length);
 
-		if ((valuesRaw == null) || (valuesRaw.length == 0)) {
+		if  (valuesRaw.length == 0) {
 			throw new URIParameterException("Parameter »" + key + "« doesn't exist.", key);
 		}
 
