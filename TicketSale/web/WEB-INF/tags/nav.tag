@@ -17,7 +17,7 @@
 		</div>
 
 		<c:choose>
-			<c:when test="${requestScope.user.userID == 0}">
+			<c:when test="${sessionScope.user.userID == 0}">
 				<div class="navbar-collapse collapse">
 					<form class="navbar-form navbar-right" role="form">
 						<div class="form-group">

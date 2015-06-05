@@ -39,7 +39,6 @@ public class IndexPageServlet extends HttpServlet {
 
 		request.setAttribute("title", "Ticket Sale");
 		request.setAttribute("description", "");
-		request.setAttribute("user", Core.getInstance().getUser(request));
 		request.setAttribute("events", events);
 
 		synchronized (Core.getInstance()) {

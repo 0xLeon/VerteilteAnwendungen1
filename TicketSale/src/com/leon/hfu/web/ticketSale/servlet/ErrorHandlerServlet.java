@@ -31,7 +31,6 @@ public class ErrorHandlerServlet extends HttpServlet {
 
 		request.setAttribute("title", "Fehler");
 		request.setAttribute("description", "");
-		request.setAttribute("user", Core.getInstance().getUser(request));
 		request.setAttribute("exception", exception);
 		request.setAttribute("stacktrace", stacktrace);
 
