@@ -152,4 +152,34 @@ public class EventAdapter {
 			SQLUtil.close(result, statement, connection);
 		}
 	}
+
+	public static void deleteEvent(Event event) throws EventException {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet result = null;
+
+		try {
+			connection = Core.getInstance().getDatabaseConnection();
+			statement = connection.prepareStatement(
+				"DELETE FROM " +
+				"	event " +
+				"WHERE " +
+				"	eventID = ?;"
+			);
+
+			statement.setInt(1, event.getEventID());
+
+			int affectedRows = statement.executeUpdate();
+
+			if (affectedRows == 0) {
+				throw new SQLException("Error on deleting event with eventID »" + event.getEventID() + "«.");
+			}
+		}
+		catch (SQLException e) {
+			throw new EventException(e);
+		}
+		finally {
+			SQLUtil.close(result, statement, connection);
+		}
+	}
 }
