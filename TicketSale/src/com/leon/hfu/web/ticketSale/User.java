@@ -56,7 +56,7 @@ public class User {
 
 	public void lazyLoadGroups(boolean forceReload) {
 		if ((this.groups == null) || forceReload) {
-			this.groups = UserHandler.getInstance().getGroupsForUser(this);
+			this.groups = UserHandler.getGroupsForUser(this);
 		}
 	}
 

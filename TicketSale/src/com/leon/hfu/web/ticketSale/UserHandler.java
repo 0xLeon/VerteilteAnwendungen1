@@ -13,27 +13,17 @@ import java.util.ArrayList;
  * Created by Stefan on 05.05.2015.
  */
 public class UserHandler {
-	private static UserHandler instance = null;
-
-	public static UserHandler getInstance() {
-		if (UserHandler.instance == null) {
-			UserHandler.instance = new UserHandler();
-		}
-
-		return UserHandler.instance;
-	}
-
-	public User createUser(String username, String password, String[] groups) {
+	public static User createUser(String username, String password, String[] groups) {
 		// TODO: implement
 
 		return User.DEFAULT_USER;
 	}
 
-	public void login(int username, String password) {
+	public static void login(int username, String password) {
 		// TODO: implement
 	}
 
-	public User getUserByID(int userID) throws NoSuchUserException {
+	public static User getUserByID(int userID) throws NoSuchUserException {
 		if (userID < 0) {
 			throw new IllegalArgumentException();
 		}
@@ -71,7 +61,7 @@ public class UserHandler {
 		}
 	}
 
-	public User[] getUsersByID(int[] userIDs) throws NoSuchUserException {
+	public static User[] getUsersByID(int[] userIDs) throws NoSuchUserException {
 		if ((userIDs == null) || (userIDs.length == 0)) {
 			throw new IllegalArgumentException();
 		}
@@ -117,7 +107,7 @@ public class UserHandler {
 		}
 	}
 
-	public String[] getGroupsForUser(User user) {
+	public static String[] getGroupsForUser(User user) {
 		if (user == null) {
 			throw new IllegalArgumentException();
 		}
