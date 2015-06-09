@@ -16,10 +16,10 @@
 					<div class="panel-heading">Fehler</div>
 					<div class="panel-body">
 						<p>Die Operation wurde konnte nicht ausgeführt werden.</p>
-						<p>Ursache: ${f:escapeXML(requestScope.exception.message)}</p>
+						<p>Ursache: ${f:escapeXML(requestScope.exception.message, false)}</p>
 
 						<div class="well">
-							<pre>${f:escapeXML(requestScope.stacktrace)}</pre>
+							<pre>${f:escapeXML(requestScope.stacktrace, false)}</pre>
 						</div>
 					</div>
 				</div>
