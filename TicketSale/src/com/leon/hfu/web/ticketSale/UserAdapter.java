@@ -12,7 +12,7 @@ import java.util.ArrayList;
 /**
  * Created by Stefan on 05.05.2015.
  */
-public class UserHandler {
+public class UserAdapter {
 	public static User createUser(String username, String password, String[] groups) {
 		// TODO: implement
 

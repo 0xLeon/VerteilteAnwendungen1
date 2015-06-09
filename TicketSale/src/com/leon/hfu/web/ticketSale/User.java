@@ -1,7 +1,5 @@
 package com.leon.hfu.web.ticketSale;
 
-import com.leon.hfu.web.ticketSale.exception.NoSuchUserException;
-
 /**
  * @author		Stefan Hahn
  */
@@ -56,7 +54,7 @@ public class User {
 
 	public void lazyLoadGroups(boolean forceReload) {
 		if ((this.groups == null) || forceReload) {
-			this.groups = UserHandler.getGroupsForUser(this);
+			this.groups = UserAdapter.getGroupsForUser(this);
 		}
 	}
 
