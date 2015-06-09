@@ -57,6 +57,10 @@ public class User {
 		return this.username;
 	}
 
+	public String getPasswordHash() {
+		return this.passwordHash;
+	}
+
 	public boolean isInGroup(String searchedGroup) {
 		this.lazyLoadGroups();
 
