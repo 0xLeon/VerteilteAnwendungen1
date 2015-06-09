@@ -2,6 +2,7 @@
 <%@ tag isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="f" uri="http://0xleon.github.io/javaee/ELUtilFunctions/1.0/" %>
 <div id="top"></div>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="container">
@@ -34,7 +35,7 @@
 				<div id="user-${sessionScope.user.userID}">
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dorpdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">${sessionScope.user.username} <span class="caret"></span></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">${f:escapeXML(sessionScope.user.username, false)} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="#">Profil</a></li>
 								<li><a href="#">Logout</a></li>

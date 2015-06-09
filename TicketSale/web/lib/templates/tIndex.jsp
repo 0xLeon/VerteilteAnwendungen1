@@ -2,6 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isErrorPage="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="f" uri="http://0xleon.github.io/javaee/ELUtilFunctions/1.0/" %>
 <t:root>
 	<t:header/>
 	<body>
@@ -31,7 +32,7 @@
 									</c:if>
 								</div>
 								<div class="panel-body">
-									<p>${event.description}</p>
+									<p>${f:escapeXML(event.description, false)}</p>
 								</div>
 							</div>
 						</c:forEach>
