@@ -18,6 +18,7 @@
 package com.leon.hfu.web.ticketSale.servlet;
 
 import com.leon.hfu.web.ticketSale.Core;
+import com.leon.hfu.web.ticketSale.Event;
 import com.leon.hfu.web.ticketSale.EventAdapter;
 import com.leon.hfu.web.ticketSale.exception.EventException;
 import com.leon.hfu.web.ticketSale.exception.URIParameterException;
@@ -54,10 +55,12 @@ public class AddEventFormServlet extends HttpServlet {
 
 		try {
 			this.getParameters(request);
-			EventAdapter.createEvent(this.eventName, this.description, this.reservationDeadline, this.purchaseDeadline, this.seatCount);
+			Event event = EventAdapter.createEvent(this.eventName, this.description, this.reservationDeadline, this.purchaseDeadline, this.seatCount);
 
 			request.setAttribute("pageTitle", "Erfolgreich | Ticket Sale");
 			request.setAttribute("pageDescription", "");
+			request.setAttribute("redirectURL", "/TicketSale/Event?eventID=" + event.getEventID());
+			request.setAttribute("redirectText", "Weiter zum erstellten Event");
 			ServletUtil.getRequestDispatcher("/lib/templates/tSuccess.jsp", this.getServletContext()).forward(request, response);
 		}
 		catch (URIParameterException e) {
