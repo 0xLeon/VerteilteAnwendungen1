@@ -17,7 +17,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * Created by Stefan on 01.05.2015.
+ * @author		Stefan Hahn
  */
 public final class Core {
 	private static Core instance = null;

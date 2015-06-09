@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * Created by Stefan on 08.05.2015.
+ * @author		Stefan Hahn
  */
 public class ServletUtil {
 	private static ConcurrentHashMap<String, RequestDispatcher> requestDispatchers = new ConcurrentHashMap<>();

@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * Created by Stefan on 08.05.2015.
+ * @author		Stefan Hahn
  */
 @WebServlet(name = "TicketHandlerServlet", urlPatterns = { "/HandleTicket" })
 public class TicketHandlerServlet extends HttpServlet {

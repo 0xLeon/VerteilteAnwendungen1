@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * Created by Stefan on 05.05.2015.
+ * @author		Stefan Hahn
  */
 public class UserAdapter {
 	public static User createUser(String username, String password, String[] groups) {
