@@ -1,5 +1,5 @@
 <%-- footer.tag --%>
-<%@ tag isELIgnored="false" %>
+<%@ tag pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <hr />
 <footer>

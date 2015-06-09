@@ -1,5 +1,5 @@
 <%-- header.tag --%>
-<%@ tag isELIgnored="false" %>
+<%@ tag pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="f" uri="http://0xleon.github.io/javaee/ELUtilFunctions/1.0/" %>
 <head>

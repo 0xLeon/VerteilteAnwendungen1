@@ -1,5 +1,5 @@
 <%-- scripts.tag --%>
-<%@ tag isELIgnored="false" %>
+<%@ tag pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <script src="./js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

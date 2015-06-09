@@ -1,5 +1,5 @@
 <%-- browserUpgrade.tag --%>
-<%@ tag isELIgnored="false" %>
+<%@ tag pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <!--[if lt IE 8]>
 <p class="browserupgrade">
