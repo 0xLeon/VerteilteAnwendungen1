@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="f" uri="http://0xleon.github.io/javaee/ELUtilFunctions/1.0/" %>
-<c:set var="customRedirect" value="${!(empty(requestScope.redirectURL) || empty(requestScope.redirectText))}" />
+<c:set var="customRedirect" value="${!(empty(requestScope.redirectURL) || empty(requestScope.redirectText))}" scope="page" />
 <t:root>
 	<t:header>
 		<c:choose>
