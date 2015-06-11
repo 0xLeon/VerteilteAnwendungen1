@@ -21,11 +21,14 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
 
 /**
  * @author		Stefan Hahn
  */
 public class SQLUtil {
+	private static HashMap<Integer, String> inPlaceHolders = new HashMap<>(10);
+
 	public static void close(ResultSet result, Statement statement, Connection connection) {
 		try {
 			if (result != null) result.close();
@@ -44,12 +47,16 @@ public class SQLUtil {
 	}
 
 	public static String getInPlaceholders(int length) {
-		StringBuilder placeholders = new StringBuilder();
+		if (!SQLUtil.inPlaceHolders.containsKey(length)) {
+			StringBuilder placeholders = new StringBuilder();
 
-		for (int i = 0; i < length; i++) {
-			placeholders.append("?, ");
+			for (int i = 0; i < length; i++) {
+				placeholders.append("?, ");
+			}
+
+			SQLUtil.inPlaceHolders.put(length, placeholders.toString().substring(0, placeholders.toString().length() - 2));
 		}
 
-		return placeholders.toString().substring(0, placeholders.toString().length() - 2);
+		return SQLUtil.inPlaceHolders.get(length);
 	}
 }
