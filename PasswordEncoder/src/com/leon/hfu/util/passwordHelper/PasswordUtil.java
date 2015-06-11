@@ -34,10 +34,11 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 
-/*
+/**
  * PBKDF2 salted password hashing.
- * Author: havoc AT defuse.ca
- * www: http://crackstation.net/hashing-security.htm
+ * http://crackstation.net/hashing-security.htm
+ *
+ * @author		havoc@defuse.ca
  */
 public class PasswordUtil {
 	public static final String PBKDF2_ALGORITHM = "PBKDF2WithHmacSHA1";
