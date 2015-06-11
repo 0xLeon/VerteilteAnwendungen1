@@ -139,15 +139,15 @@ public class UserAdapter {
 			connection = Core.getInstance().getDatabaseConnection();
 			statement = connection.prepareStatement(
 				"SELECT " +
-				"	tGroup.groupIdentifier AS groupIdentifier " +
+				"	tsGroup.groupIdentifier AS groupIdentifier " +
 				"FROM " +
-				"	ticketsale_group tGroup " +
+				"	ticketsale_group tsGroup " +
 				"LEFT JOIN " +
-				"	ticketsale_user_to_group toGroup " +
+				"	ticketsale_user_to_group tsToGroup " +
 				"ON " +
-				"	toGroup.groupID = tGroup.groupID " +
+				"	tsToGroup.groupID = tsGroup.groupID " +
 				"WHERE " +
-				"	toGroup.userID = ?;"
+				"	tsToGroup.userID = ?;"
 			);
 
 			statement.setInt(1, user.getUserID());

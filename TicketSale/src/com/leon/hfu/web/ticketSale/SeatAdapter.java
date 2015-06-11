@@ -82,22 +82,22 @@ public class SeatAdapter {
 			connection = Core.getInstance().getDatabaseConnection();
 			statement = connection.prepareStatement(
 				"SELECT " +
-				"	seat.seatID AS seatID, " +
-				"	seat.seatNumber AS seatNumber, " +
-				"	seat.seatStatus AS seatStatus, " +
-				"	tUser.userID AS userID, " +
-				"	tUser.username AS username, " +
-				"	tUser.passwordHash AS passwordHash " +
+				"	tsSeat.seatID AS seatID, " +
+				"	tsSeat.seatNumber AS seatNumber, " +
+				"	tsSeat.seatStatus AS seatStatus, " +
+				"	tsUser.userID AS userID, " +
+				"	tsUser.username AS username, " +
+				"	tsUser.passwordHash AS passwordHash " +
 				"FROM " +
-				"	ticketsale_seat seat " +
+				"	ticketsale_seat tsSeat " +
 				"LEFT JOIN " +
-				"	ticketsale_user tUser " +
+				"	ticketsale_user tsUser " +
 				"ON " +
-				"	seat.userID = tUser.userID " +
+				"	tsSeat.userID = tsUser.userID " +
 				"WHERE " +
-				"	seat.eventID = ? " +
+				"	tsSeat.eventID = ? " +
 				"ORDER BY " +
-				"	seat.seatNumber ASC;"
+				"	tsSeat.seatNumber ASC;"
 			);
 
 			statement.setInt(1, eventID);
