@@ -7,6 +7,7 @@ CREATE TABLE ticketsale_seat (
 	userID INT(10) DEFAULT NULL,
 
 	KEY (eventID),
+	KEY (seatNumber),
 	KEY (userID)
 );
 
@@ -26,8 +27,7 @@ CREATE TABLE ticketsale_group (
 	groupName VARCHAR(255) NOT NULL,
 
 	UNIQUE (groupIdentifier),
-	UNIQUE (groupName),
-	KEY (groupName)
+	UNIQUE (groupName)
 );
 
 DROP TABLE IF EXISTS ticketsale_event;
