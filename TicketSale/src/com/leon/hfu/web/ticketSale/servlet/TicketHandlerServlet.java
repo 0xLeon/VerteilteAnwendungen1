@@ -69,6 +69,8 @@ public class TicketHandlerServlet extends HttpServlet {
 
 		request.setAttribute("pageTitle", "Erfolgreich | Ticket Sale");
 		request.setAttribute("pageDescription", "");
+		request.setAttribute("redirectURL", "/TicketSale/Event?eventID=" + this.event.getEventID());
+		request.setAttribute("redirectText", "Weiter zum Event");
 		ServletUtil.getRequestDispatcher("/lib/templates/tSuccess.jsp", this.getServletContext()).forward(request, response);
 	}
 
