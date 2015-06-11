@@ -54,7 +54,7 @@ public class SQLUtil {
 				placeholders.append("?, ");
 			}
 
-			SQLUtil.inPlaceHolders.put(length, placeholders.toString().substring(0, placeholders.toString().length() - 2));
+			SQLUtil.inPlaceHolders.put(length, placeholders.substring(0, placeholders.length() - 2));
 		}
 
 		return SQLUtil.inPlaceHolders.get(length);
