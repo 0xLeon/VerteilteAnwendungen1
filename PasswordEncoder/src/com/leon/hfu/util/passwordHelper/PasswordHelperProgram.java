@@ -1,5 +1,6 @@
 package com.leon.hfu.util.passwordHelper;
 
+import ca.defuse.havoc.util.PasswordUtil;
 import com.leon.hfu.util.commandLine.CommandLineException;
 import com.leon.hfu.util.commandLine.CommandLineExceptionType;
 import com.leon.hfu.util.commandLine.CommandLineProgram;

@@ -20,8 +20,9 @@ package com.leon.hfu.web.ticketSale.servlet;
 import com.leon.hfu.web.ticketSale.Core;
 import com.leon.hfu.web.ticketSale.Event;
 import com.leon.hfu.web.ticketSale.exception.EventException;
-import com.leon.hfu.web.ticketSale.exception.URIParameterException;
+import com.leon.exception.URIParameterException;
 import com.leon.hfu.web.ticketSale.util.ServletUtil;
+import com.leon.hfu.web.ticketSale.util.TicketSaleUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,7 +43,7 @@ public class TicketHandlerServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Core.getInstance().initSession(request, response);
 
-		this.event = ServletUtil.getEventFromRequest(request);
+		this.event = TicketSaleUtil.getEventFromRequest(request);
 
 		String action;
 		try {

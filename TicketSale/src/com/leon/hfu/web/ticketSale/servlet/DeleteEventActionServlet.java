@@ -22,6 +22,7 @@ import com.leon.hfu.web.ticketSale.Event;
 import com.leon.hfu.web.ticketSale.EventAdapter;
 import com.leon.hfu.web.ticketSale.exception.EventException;
 import com.leon.hfu.web.ticketSale.util.ServletUtil;
+import com.leon.hfu.web.ticketSale.util.TicketSaleUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,7 +46,7 @@ public class DeleteEventActionServlet extends HttpServlet {
 			throw new ServletException("Zugriff nicht gestattet!");
 		}
 
-		this.event = ServletUtil.getEventFromRequest(request);
+		this.event = TicketSaleUtil.getEventFromRequest(request);
 
 		try {
 			EventAdapter.deleteEvent(this.event);

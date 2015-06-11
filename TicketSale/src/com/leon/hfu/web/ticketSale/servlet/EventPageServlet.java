@@ -21,6 +21,7 @@ import com.leon.hfu.web.ticketSale.Core;
 import com.leon.hfu.web.ticketSale.Event;
 import com.leon.hfu.web.ticketSale.exception.EventException;
 import com.leon.hfu.web.ticketSale.util.ServletUtil;
+import com.leon.hfu.web.ticketSale.util.TicketSaleUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,7 +46,7 @@ public class EventPageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Core.getInstance().initSession(request, response);
 
-		this.event = ServletUtil.getEventFromRequest(request);
+		this.event = TicketSaleUtil.getEventFromRequest(request);
 
 		try {
 			this.event.lazyLoadSeats();

@@ -17,14 +17,10 @@
  */
 package com.leon.hfu.web.ticketSale.util;
 
-import com.leon.hfu.web.ticketSale.Event;
-import com.leon.hfu.web.ticketSale.EventAdapter;
-import com.leon.hfu.web.ticketSale.exception.EventException;
-import com.leon.hfu.web.ticketSale.exception.URIParameterException;
+import com.leon.exception.URIParameterException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -34,6 +30,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author		Stefan Hahn
  */
 public class ServletUtil {
+	// TODO: move to own library project
 	private static ConcurrentHashMap<String, RequestDispatcher> requestDispatchers = new ConcurrentHashMap<>();
 
 	public static ArrayList<String> getRequestParameter(HttpServletRequest request, String key) throws URIParameterException {
@@ -71,17 +68,6 @@ public class ServletUtil {
 		}
 
 		return (T) value;
-	}
-
-	public static Event getEventFromRequest(HttpServletRequest request) throws ServletException {
-		try {
-			int eventID = Integer.parseInt(ServletUtil.getSingleRequestParameter(request, "eventID"));
-
-			 return EventAdapter.getEventByID(eventID);
-		}
-		catch (NumberFormatException | URIParameterException | EventException e) {
-			throw new ServletException(e);
-		}
 	}
 
 	public synchronized static RequestDispatcher getRequestDispatcher(String path, ServletContext servletContext) {

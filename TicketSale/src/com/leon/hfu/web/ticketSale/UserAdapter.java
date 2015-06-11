@@ -18,7 +18,7 @@
 package com.leon.hfu.web.ticketSale;
 
 import com.leon.hfu.web.ticketSale.exception.NoSuchUserException;
-import com.leon.hfu.web.ticketSale.util.SQLUtil;
+import com.leon.util.SQLUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
