@@ -26,7 +26,7 @@ import java.util.HashMap;
 /**
  * @author		Stefan Hahn
  */
-public class SQLUtil {
+public final class SQLUtil {
 	private static HashMap<Integer, String> inPlaceHolders = new HashMap<>(10);
 
 	public static void close(ResultSet result, Statement statement, Connection connection) {

@@ -40,7 +40,7 @@ import java.security.spec.InvalidKeySpecException;
  *
  * @author		havoc@defuse.ca
  */
-public class PasswordUtil {
+public final class PasswordUtil {
 	public static final String PBKDF2_ALGORITHM = "PBKDF2WithHmacSHA1";
 
 	// The following constants may be changed without breaking existing hashes.
