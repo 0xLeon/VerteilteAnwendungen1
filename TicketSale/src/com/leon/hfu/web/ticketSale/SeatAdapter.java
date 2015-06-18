@@ -58,15 +58,7 @@ public class SeatAdapter {
 			throw new EventException(e);
 		}
 		finally {
-			try {
-				if (statement != null) statement.close();
-			}
-			catch (SQLException e) { }
-
-			try {
-				if (connection != null) connection.close();
-			}
-			catch (SQLException e) { }
+			SQLUtil.close(null, statement, connection);
 		}
 	}
 
