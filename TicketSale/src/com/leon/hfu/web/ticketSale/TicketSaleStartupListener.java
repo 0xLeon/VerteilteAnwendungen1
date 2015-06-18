@@ -17,6 +17,8 @@
  */
 package com.leon.hfu.web.ticketSale;
 
+import com.leon.hfu.web.ticketSale.rmi.TicketSaleRMIServiceStarter;
+
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
@@ -29,6 +31,8 @@ public class TicketSaleStartupListener implements ServletContextListener {
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
 		sce.getServletContext().setAttribute("core", Core.getInstance());
+
+		TicketSaleRMIServiceStarter.startService();
 	}
 
 	@Override
