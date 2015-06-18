@@ -36,6 +36,8 @@ import java.util.ArrayList;
  */
 @WebServlet(name = "IndexPageServlet", urlPatterns = { "/Index" })
 public class IndexPageServlet extends HttpServlet {
+	private static final long serialVersionUID = -3001473253494788701L;
+
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		throw new ServletException("Method not allowed.");

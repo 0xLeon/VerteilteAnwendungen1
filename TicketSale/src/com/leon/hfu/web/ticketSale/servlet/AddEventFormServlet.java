@@ -40,6 +40,8 @@ import java.util.HashMap;
  */
 @WebServlet(name = "AddEventFormServlet", urlPatterns = { "/AddEvent" })
 public class AddEventFormServlet extends HttpServlet {
+	private static final long serialVersionUID = -1445285914575198162L;
+
 	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 
 	private String eventName;

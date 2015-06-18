@@ -17,10 +17,16 @@
  */
 package com.leon.hfu.web.ticketSale;
 
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
 /**
  * @author		Stefan Hahn
  */
-public class User {
+public class User implements Serializable {
+	private static final long serialVersionUID = -8896256539917599779L;
+
 	// TODO: add password hashes for correct login
 	public static final User DEFAULT_USER = new User(0, "default", "", new String[0]);
 
@@ -90,5 +96,10 @@ public class User {
 		}
 
 		return ((User) obj).getUserID() == this.getUserID();
+	}
+
+	private void writeObject(ObjectOutputStream out) throws IOException {
+		this.lazyLoadGroups();
+		out.defaultWriteObject();
 	}
 }

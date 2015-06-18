@@ -23,6 +23,8 @@ import java.util.HashMap;
  * @author		Stefan Hahn
  */
 public class URIParameterException extends Exception {
+	private static final long serialVersionUID = -1812503906030983068L;
+
 	private String parameterName = null;
 	private HashMap<String, URIParameterException> multipleErrors = null;
 

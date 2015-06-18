@@ -35,6 +35,8 @@ import java.io.IOException;
  */
 @WebServlet(name = "EventPageServlet", urlPatterns = { "/Event" })
 public class EventPageServlet extends HttpServlet {
+	private static final long serialVersionUID = -2999507987945498659L;
+
 	private Event event;
 
 	@Override

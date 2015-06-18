@@ -35,6 +35,8 @@ import java.io.IOException;
  */
 @WebServlet(name = "CancelReservationsServlet", urlPatterns = { "/CancelReservations" })
 public class CancelReservationsServlet extends HttpServlet {
+	private static final long serialVersionUID = 2296739394810722122L;
+
 	private Event event;
 
 	@Override

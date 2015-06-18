@@ -19,13 +19,18 @@ package com.leon.hfu.web.ticketSale;
 
 import com.leon.hfu.web.ticketSale.exception.EventException;
 
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 
 /**
  * @author		Stefan Hahn
  */
-public class Event {
+public class Event implements Serializable {
+	private static final long serialVersionUID = 7781189333728593564L;
+
 	private int eventID;
 	private String eventName;
 	private String description;
@@ -176,5 +181,16 @@ public class Event {
 		if (this.getSeats().get(seatID) == null) {
 			throw new EventException("Given seatID »" + seatID + "« is invalid.");
 		}
+	}
+
+	private void writeObject(ObjectOutputStream out) throws IOException {
+		try {
+			this.lazyLoadSeats();
+		}
+		catch (EventException e) {
+			throw new IOException(e);
+		}
+
+		out.defaultWriteObject();
 	}
 }

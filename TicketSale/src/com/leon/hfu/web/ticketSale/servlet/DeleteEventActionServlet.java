@@ -36,6 +36,8 @@ import java.io.IOException;
  */
 @WebServlet(name = "DeleteEventActionServlet", urlPatterns = { "/DeleteEvent" })
 public class DeleteEventActionServlet extends HttpServlet {
+	private static final long serialVersionUID = -6055325083091395049L;
+
 	private Event event = null;
 
 	@Override

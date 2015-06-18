@@ -21,6 +21,8 @@ package com.leon.hfu.web.ticketSale.exception;
  * @author		Stefan Hahn
  */
 public class NoSuchUserException extends Exception {
+	private static final long serialVersionUID = 1711071485645508736L;
+
 	public NoSuchUserException() { }
 
 	public NoSuchUserException(String message) {

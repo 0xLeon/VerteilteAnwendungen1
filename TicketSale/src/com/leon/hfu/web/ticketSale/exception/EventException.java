@@ -21,6 +21,8 @@ package com.leon.hfu.web.ticketSale.exception;
  * @author		Stefan Hahn
  */
 public class EventException extends Exception {
+	private static final long serialVersionUID = -2050991248858380771L;
+
 	public EventException(String message, Throwable cause) {
 		super(message, cause);
 	}

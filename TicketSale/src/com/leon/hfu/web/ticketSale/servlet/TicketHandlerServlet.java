@@ -37,6 +37,8 @@ import java.util.ArrayList;
  */
 @WebServlet(name = "TicketHandlerServlet", urlPatterns = { "/HandleTicket" })
 public class TicketHandlerServlet extends HttpServlet {
+	private static final long serialVersionUID = 840246347577350748L;
+
 	private Event event;
 
 	@Override

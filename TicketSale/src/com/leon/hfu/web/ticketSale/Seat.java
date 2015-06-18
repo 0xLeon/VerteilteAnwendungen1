@@ -19,10 +19,17 @@ package com.leon.hfu.web.ticketSale;
 
 import com.leon.hfu.web.ticketSale.exception.EventException;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
 /**
  * @author		Stefan Hahn
  */
-public class Seat {
+public class Seat implements Serializable {
+	private static final long serialVersionUID = 516402090925468581L;
+
 	private int seatID;
 
 	private int seatNumber;
@@ -141,5 +148,21 @@ public class Seat {
 		}
 
 		return ((Seat) obj).getSeatID() == this.getSeatID();
+	}
+
+	private void writeObject(ObjectOutputStream out) throws IOException {
+		if (this.customer.equals(User.DEFAULT_USER)) {
+			this.customer = null;
+		}
+
+		out.defaultWriteObject();
+	}
+
+	private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+		in.defaultReadObject();
+
+		if (this.customer == null) {
+			this.customer = User.DEFAULT_USER;
+		}
 	}
 }

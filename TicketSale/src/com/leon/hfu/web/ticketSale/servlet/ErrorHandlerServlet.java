@@ -35,6 +35,8 @@ import java.io.StringWriter;
  */
 @WebServlet(name = "ErrorHandlerServlet", urlPatterns = { "/Error" })
 public class ErrorHandlerServlet extends HttpServlet {
+	private static final long serialVersionUID = -6819538599669667627L;
+
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Core.getInstance().initSession(request, response);
